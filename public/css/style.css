@@ -1,0 +1,67 @@
+input[type="text"],input[type="email"],textarea,select{
+	border-radius: 20px;
+	width: 30%;
+}
+
+button{
+    border-radius: 20px;
+	padding: 10px;
+	height: 30px;
+	background-color: white;
+}
+
+input[type="submit"],input[type="reset"]{
+	border-radius: 20px;
+	padding-bottom: 10px;
+	height: 30px;
+	background-color: white;
+}
+
+.kiri {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+
+  .kanan {
+    float: right;
+    width: 50%;
+    height: 100%;
+  }
+  .tengah{
+    width: 100%;
+  }
+
+  .kanankuyy {
+    float: right;
+    width: 70%;
+    height: 100%;
+  }
+
+  .kirikuyy {
+    float: left;
+    width: 30%;
+    height: 100%;
+  }
+
+  .kiri1 {
+    float: left;
+    width: 35%;
+    height: 100%;
+  }
+
+  .kiri2 {
+    float: left;
+    width: 15%;
+    height: 100%;
+  }
+
+  .kiri3 {
+    float: left;
+    width: 20%;
+    height: 100%;
+  }
+
+
+
+  
