@@ -1,0 +1,48 @@
+body{
+    background: url('../img/7604594@2x.jpg');
+    background-size: cover !important;
+    height: 100% !important;
+}
+
+.container-navbar{
+    padding-left: 0px !important;
+}
+
+.navbar-logo{
+    padding-left: 0px !important;
+}
+
+.navbar-navigation li{
+    border-bottom: 2px solid black;
+}
+
+.navbar-navigation .active{
+    border-bottom: 4px solid red;
+}
+
+.navbar-navigation .active a{
+    color: red;
+}
+
+.navbar-navigation a{
+    font-size: 18px;
+}
+
+.navbar-navigation .btn:hover, .btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none !important;
+    box-shadow:none !important;
+    border: 0px !important;
+}
+
+.stripe{
+    height: 10% !important;
+}
+
+.stripe img{
+    height: 790px;
+}
+
+.footer p{
+    color: grey;
+    margin-top:-20px;
+}
