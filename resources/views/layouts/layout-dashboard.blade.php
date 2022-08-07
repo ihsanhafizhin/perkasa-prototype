@@ -24,6 +24,7 @@
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/layout-dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/dashboard-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -48,6 +49,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item nav-item-sidebar">
+                <a class="nav-link " href="{{ route('dashboard-chart') }}" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRab"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-calendar-alt"></i>
@@ -332,6 +338,10 @@
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
+    {{-- Chart js --}}
+    @stack('chart-js')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </body>
 
 </html>

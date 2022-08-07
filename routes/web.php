@@ -15,9 +15,11 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
     Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
     Route::view('/data-pendukung', 'data_pendukung')->name('data-pendukung');
     Route::view('/monitoring-penelaahan', 'monitoring_penelaah')->name('monitoring-penelaahan');
+    
 
     // Rute Settings/Master Data
     Route::view('/unit-kerja', 'unit_kerja')->name('unit-kerja');

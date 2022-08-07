@@ -12,7 +12,78 @@
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#subkomponen" style="background-color:orangered; color:white; font-size:14px;"> + REKAM SUB KOMPONEN</a>
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#akun" style="background-color:red; color:white; font-size:14px;"> + REKAM AKUN</a>
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#detail" style="background-color:maroon; color:white; font-size:14px;"> + REKAM DETAIL</a>
-            <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#dataUnitKerja" style="background-color:maroon; color:white; font-size:14px;"> + REKAM DETAIL</a>
+
+              <!-- Button trigger modal Penelaah -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notePenelaah">
+                Note Penelaah
+            </button>
+
+            <!-- Button trigger modal Reviewer -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noteReviewer">
+                Note Reviewer
+            </button>
+            
+            <!-- Modal Reviewer-->
+            <div class="modal fade" id="noteReviewer" tabindex="-1" aria-labelledby="noteReviewer" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="noteReviewer">Tambahkan Note Reviewer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Primary Key">
+                        </div>
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
+                        </div>
+                        <div class="form-groups">
+                            <label for="">Note Reviewer</label>
+                            <input type="textarea" class="form-control">
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Penelaah-->
+            <div class="modal fade" id="notePenelaah" tabindex="-1" aria-labelledby="noteReviewer" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="notePenelaah">Tambahkan Note Penelaah</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Primary Key">
+                        </div>
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
+                        </div>
+                        <div class="form-groups">
+                            <label for="">Note Penelaah</label>
+                            <input type="textarea" class="form-control">
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                </div>
+            </div>
         </b>
     </div>
     {{-- KONTEN --}}
