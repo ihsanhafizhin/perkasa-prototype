@@ -4,9 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INDEX</title>
-    <link rel="stylesheet" type="text/css" href="css1/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css1/bootstrap.css') }}">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
 </head>
 <body>
 
@@ -319,7 +319,7 @@
             </center>
             </div>
         </div>
-        </div>   
+    </div>   
 
         
 

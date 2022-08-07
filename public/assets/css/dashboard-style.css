@@ -1,0 +1,14 @@
+.container-content{
+    background-color: white !important;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.row-modal-button{
+    padding-bottom: 16px;
+    border-bottom: 2px solid grey;
+}
+
+.btn-add-rab{
+    font-size: 14px !important;
+}

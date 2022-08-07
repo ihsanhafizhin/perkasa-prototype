@@ -17,10 +17,10 @@
             <img src="../assets/img/Logo 5_PNG.png" alt="Logo" width="100%" height="auto">
           </div>
           <div class="col-6 navbar-navigation d-flex justify-content-end align-items-center">
-            <li class="{{ '/' == request()->path() ? 'active' : '' }}">
+            <li class="{{ request()->is('/') ? 'active' : '' }}">
               <a href="{{ url('/') }}" class="btn">Home</a>
             </li>
-            <li class="{{ '/login' == request()->path() ? 'active' : '' }}">
+            <li class="{{ request()->is('login') ? 'active' : '' }}">
               <a href="{{ url('/login') }}" class="btn">Login</a>
             </li>
             <li class="">

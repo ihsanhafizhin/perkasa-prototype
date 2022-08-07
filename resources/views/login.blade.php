@@ -10,24 +10,26 @@
                             @csrf
                             <img src="../assets/img/ikon.png" class="rounded-circle">
     
-                            <div class="">
-                                <br>
-    
+                            <div class="container-form-login">    
                                 <div class="form-outline form-white mb-4">
-                                    <input type="text" name="username" id="typeEmailX" class="form-control" />
+                                    <input type="text" name="username" id="typeEmailX" class="form-control form-login" />
                                     <label class="form-label" for="typeEmailX">Username</label>
                                 </div>
     
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" name="password" id="typePasswordX" class="form-control" />
+                                    <input type="password" name="password" id="typePasswordX" class="form-control form-login" />
                                     <label class="form-label" for="typePasswordX">Password</label>
                                 </div>
                                 
-                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">
-                                Remember me      
-                                Forgot password?</a></p>
+                               <div class="d-flex justify-content-between container-login-link">
+                                <div class="input-group-text">
+                                    <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                    <label href="#" for="rememberMe">Remember Me</label>
+                                  </div>
+                                <a href="#">Forgot Password?</a>
+                               </div>
     
-                                <button style = "bgcolor:red"class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <button style = "bgcolor:red"class="btn btn-submit" type="submit">LOGIN</button>
                             </div>
                         </form>
 

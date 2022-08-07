@@ -23,9 +23,76 @@
   }
 
   .row-card-login{
-    margin-top: 4%;
+    margin-top: 5%;
+  }
+
+  .container-form-login{
+    margin-top: 16px;
+  }
+
+  .form-outline{
+    margin: 4px 16px 8px 16px !important;
+  }
+
+  .card-body{
+    padding: 12px;
   }
 
   .rounded-circle{
     height: 20% !important;
+  }
+
+  .form-label{
+    font-size: 14px;
+  }
+
+  .container-login-link{
+    padding: 0px 16px 0px 16px;
+  }
+
+  .container-login-link a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .input-group-text{
+    border: none;
+    background-color: transparent !important;
+  }
+
+  .input-group-text label{
+    color: white;
+    margin-left: 8px !important;
+  }
+
+  .form-outline .form-login{
+    color: white;
+    background-color: red !important;
+    outline: none !important;
+    border-bottom: 1px solid white !important;
+  }
+
+  .form-outline .form-login:focus{
+    color: white;
+    background-color: red !important;
+    outline: none !important;
+    border-bottom: 1px solid white !important;
+  }
+
+  .btn-submit{
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 24px;
+    font-size: 18px;
+    color: red;
+    background-color: white;
+    width: 80%;
+  }
+
+  .container-rab{
+    background-color: white !important  ;
+  }
+
+  .btn-add-rab{
+    font-size: 14px !important;
   }
