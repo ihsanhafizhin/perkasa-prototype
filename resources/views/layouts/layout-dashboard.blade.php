@@ -16,6 +16,7 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -54,12 +55,12 @@
                 </a>
                 <div id="collapseRab" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
-                        <a class="collapse-item" href="cards.html">RAB Kegiatan</a>
+                        <a class="collapse-item" href="{{ route('dashboard') }}">RAB Kegiatan</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- TOR/KAK dan Data Dukungs Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTor"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -69,7 +70,7 @@
                 <div id="collapseTor" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
-                        <a class="collapse-item" href="utilities-other.html">TOR/KAK dan Data Dukung</a>
+                        <a class="collapse-item" href="{{ route('data-pendukung') }}">TOR/KAK dan Data Dukung</a>
                     </div>
                 </div>
             </li>  
@@ -83,8 +84,8 @@
                 <div id="collapseMonitoring" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
-                        <a class="collapse-item" href="utilities-other.html">Penelaah dan Reviewer</a>
-                        <a class="collapse-item" href="utilities-other.html">Hasil Penelaahan</a>
+                        <a class="collapse-item" href="{{ route('monitoring-penelaahan') }}">Penelaah dan Reviewer</a>
+                        <a class="collapse-item" href="{{ route('monitoring-penelaahan') }}">Hasil Penelaahan</a>
                     </div>
                 </div>
             </li> 
@@ -97,8 +98,74 @@
                 <div id="collapseSetting" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
-                        <a class="collapse-item" href="utilities-other.html">#</a>
-                        <a class="collapse-item" href="utilities-other.html">#</a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMasterData"
+                            aria-expanded="true">
+                            <span>Master Data</span>
+                        </a>
+                        <div id="collapseMasterData" class="collapse" aria-labelledby="headingUtilities">
+                            <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
+                                <a class="nav-link" href="{{ route('unit-kerja') }}">
+                                    <span>Unit Kerja</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('unit-organisasi') }}">
+                                    <span>Unit Organisasi</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMag"
+                            aria-expanded="true">
+                            <span>Setup MAG</span>
+                        </a>
+                        <div id="collapseMag" class="collapse" aria-labelledby="headingUtilities">
+                            <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
+                                <a class="nav-link" href="{{ route('program') }}">
+                                    <span>Program</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('kegiatan') }}">
+                                    <span>Kegiatan</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('kro') }}">
+                                    <span>KRO</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('ro') }}">
+                                    <span>RO</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('komponen') }}">
+                                    <span>komponen</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('sub-komponen') }}">
+                                    <span>Sub Komponen</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('akun-coa') }}">
+                                    <span>Akun COA</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManageUsers"
+                            aria-expanded="true">
+                            <span>Manage Users</span>
+                        </a>
+                        <div id="collapseManageUsers" class="collapse" aria-labelledby="headingUtilities">
+                            <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
+                                <a class="nav-link" href="{{ route('users') }}">
+                                    <span>Users</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('user-level-permission') }}">
+                                    <span>User Level Permission</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('user-levels') }}">
+                                    <span>User Levels</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('group') }}">
+                                    <span>Group</span>
+                                </a>
+                                <a class="nav-link" href="{{ route('group-member') }}">
+                                    <span>Group Member</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </li> 
@@ -248,6 +315,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 

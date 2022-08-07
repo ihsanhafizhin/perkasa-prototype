@@ -69,3 +69,34 @@ body{
     font-size: 12px;
     margin: 0px !important;
 }
+
+.form-data-pendukung .row .input-container{
+    border-left: 2px solid #6D6E72;
+}
+
+.container-label{
+    padding-left: 20%;
+}
+
+.form-data-pendukung p{
+    color: #6D6E72 !important;
+}
+
+.btn-submit-datap{
+    margin-top: 24px;
+    border-radius: 20px;
+    width: 100px;
+}
+
+.keterangan-input{
+    margin-bottom: 0px;
+    margin-left: 4px !important;
+}
+
+.container-data-pendukung{
+    border-top: 2px solid #6D6E72;
+    border-bottom: 2px solid #6D6E72;
+
+    padding-top: 20px;
+    padding-bottom: 30px;
+}

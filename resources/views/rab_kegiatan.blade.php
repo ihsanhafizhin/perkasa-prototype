@@ -12,11 +12,46 @@
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#subkomponen" style="background-color:orangered; color:white; font-size:14px;"> + REKAM SUB KOMPONEN</a>
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#akun" style="background-color:red; color:white; font-size:14px;"> + REKAM AKUN</a>
             <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#detail" style="background-color:maroon; color:white; font-size:14px;"> + REKAM DETAIL</a>
+            <a href="/" class="btn btn-add-rab" data-toggle="modal" data-target="#dataUnitKerja" style="background-color:maroon; color:white; font-size:14px;"> + REKAM DETAIL</a>
         </b>
     </div>
-    <div class="row row-content">
-        sss
-    </div>
+    {{-- KONTEN --}}
+    {{-- <div class="row row-content">
+        <table class="table table-rincian">
+            <thead>
+              <tr>
+                <th scope="col">Kode</th>
+                <th scope="col">Uraian</th>
+                <th scope="col">Volume</th>
+                <th scope="col">Satuan</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Ket</th>
+                <th scope="col">Aksi</th>
+                <th scope="col">Catatan</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+    </div> --}}
     
 </div>
 
