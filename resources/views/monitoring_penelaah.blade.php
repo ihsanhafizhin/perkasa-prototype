@@ -140,7 +140,7 @@
     <center>
         <h3>
         <br><br>
-        <button value="DOWNLOAD/UNDUH" align="center" class="button" style="width:100%%; height:50px; border-radius:35px; color:white; background-color:green">DOWNLOAD/UNDUH</button>
+        <button value="DOWNLOAD/UNDUH" align="center" class="button" style="width:100%la%; height:50px; border-radius:35px; color:white; background-color:green">DOWNLOAD/UNDUH</button>
         </div>
         </h3>
     </center>

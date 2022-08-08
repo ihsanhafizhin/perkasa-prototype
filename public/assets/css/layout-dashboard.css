@@ -100,3 +100,24 @@ body{
     padding-top: 20px;
     padding-bottom: 30px;
 }
+
+.table-rincian p{
+    font-size: 10px;
+}
+
+.kolom-aksi-rab .row .btn{
+    width: 30%;
+    padding: 2px;
+    height: 25px;
+    margin-bottom: 2.5%;
+}
+
+.table-rincian th,td{
+    /*use this property to disbale soft wrap*/
+    white-space: nowrap;
+    /*To make extra certain,add this css property*/
+    word-break: keep-all;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+
+}
