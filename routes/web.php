@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\RABController;
 Route::view('/', 'landing-page');
 
 // Route::view('/dashboard', 'layouts.layout-dashboard');
@@ -16,7 +16,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
     Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
-    Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
+    //Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
+    Route::get('/dashboard', [RABController::class, 'rab_kegiatan'])->name('dashboard');
     Route::view('/data-pendukung', 'data_pendukung')->name('data-pendukung');
     Route::view('/monitoring-penelaahan', 'monitoring_penelaah')->name('monitoring-penelaahan');
     

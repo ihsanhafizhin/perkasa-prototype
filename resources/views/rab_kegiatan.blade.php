@@ -1,6 +1,55 @@
 @extends('layouts.layout-dashboard')
 
 @section('content')
+
+
+@php
+
+$array = json_decode( $response, true );
+
+$arrays = $array['kegiatan'];
+echo "
+<table>
+";
+foreach($arrays as $item) {
+
+    $id_rab = $item['id'];
+
+    echo "
+            <tr>
+                <td>
+                                                <div class='row uraian-level-1'>
+                                                    <p>
+                                                        ";
+
+                                                        echo $id_rab;
+
+                                                    echo "   
+                                                    </p>
+                                                </div>
+                                                
+                                                
+                </td>	
+            </tr>
+";
+
+}
+
+
+    echo"
+    </table>	
+    ";
+
+
+
+
+   
+    
+	
+
+    
+@endphp
+
 <div class="container-fluid container-content">
     <div class="row row-modal-button">
         <b>
@@ -913,7 +962,7 @@
         </div>
     </div>
 </div>
-
+test
 @push('js-table')
     <script>
         $(document).ready(function () {

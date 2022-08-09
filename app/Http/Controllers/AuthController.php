@@ -8,11 +8,15 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
+
+
 class AuthController extends Controller
 {
     public function login(Request $request) {
         try{
-            $BASE_URL = env('API_URL');
+           //$BASE_URL = env('API_URL');
+            $BASE_URL ="https://perkasa.mdazone.com";
+            //dd($BASE_URL);
             $endpoint = "$BASE_URL/api/login";
     
             $request->validate([
@@ -36,8 +40,40 @@ class AuthController extends Controller
                 ]
             );
 
+            $token = $response->JWT;
+           // dd($token);
+            
+
+            
+            // $api_url = "https://perkasa.mdazone.com/api/list/rab?table=rab";
+            // $curl = curl_init();
+            // curl_setopt_array($curl, array(
+            // CURLOPT_URL => $api_url,
+            // CURLOPT_RETURNTRANSFER => true,
+            // CURLOPT_ENCODING => '',
+            // CURLOPT_MAXREDIRS => 10,
+            // CURLOPT_TIMEOUT => 0,
+            // CURLOPT_FOLLOWLOCATION => true,
+            // CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            // CURLOPT_CUSTOMREQUEST => 'GET',
+            // CURLOPT_HTTPHEADER => array(
+            //     'Content-Type: application/json',
+            //     'Authorization: Bearer '.$token,
+            //     'Cookie: perkasa2[JWT]='.$token
+            // ),
+            // ));
+
+            // $response = curl_exec($curl);
+
+            // curl_close($curl);
+            // dd($response);
+            
             Auth::login($user);
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard',compact('token'));
+
+          // return redirect()->route('dashboard');
+
+            //return redirect()->route('dashboard', [$s]);
         }catch(Exception $err) {
             dd($err->getMessage());
             Auth::logout();
