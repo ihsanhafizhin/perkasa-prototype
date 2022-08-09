@@ -14,9 +14,9 @@ class RABController extends Controller
     public function rab_kegiatan(Request $request) {
         try{        
             
-            $token = $request->token;                        
-            //$api_url = "https://perkasa.mdazone.com/api/list/rab?table=rab";
-            $api_url = "https://perkasa.mdazone.com/api/list/kegiatan";
+            $token = $request->token;                                    
+            $BASE_URL = env('API_URL');           
+            $api_url = "$BASE_URL/api/list/kegiatan";            
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $api_url,
@@ -35,13 +35,7 @@ class RABController extends Controller
             ));
 
             $responses = curl_exec($curl);
-
             curl_close($curl);
-
-           //dd($response);
-
-            //return view('rab_kegiatan',compact('$response'));
-
             return view('rab_kegiatan', [
                 'response' => $responses
              ]);
