@@ -51,6 +51,7 @@ foreach($arrays as $item) {
 @endphp
 
 <div class="container-fluid container-content">
+
     <div class="row row-modal-button">
         <b>
             <a href="/" class="btn btn-success btn-add-rab" data-toggle="modal" data-target="#program" style="font-size:14px;"> + REKAM PROGRAM</a>
@@ -131,6 +132,40 @@ foreach($arrays as $item) {
                 </form>
                 </div>
             </div>
+
+            <div class="modal fade" id="btn_i_delete" tabindex="-1" aria-labelledby="btn_i_delete" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="{{ route('rab_delete') }}" method="POST">
+                @csrf
+                <input type="hidden" name="token" value="{{$token}}"/>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="btn_i_delete">Informasi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Primary Key">
+                        </div>
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
+                        </div>
+                        <div class="form-groups">
+                           <h5 class="modal-title" id="btn_i_delete">Apakah anda mau menghapus data ini ?</h5>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                      
+
+                        <button id="btn_i_delete_ya" class="btn btn-primary" type="submit">Ya</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+
         </b>
     </div>
     {{-- KONTEN TABLENYA --}}
@@ -559,8 +594,10 @@ foreach($arrays as $item) {
                                 </div>
                             </td>
                             <td class="kolom-aksi-rab">
-                                <div class="row btn-level-1">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
+                                <div class="row btn-level-1">                                   
+                                    <button class="btn btn-sm btn-danger" type="button"  data-bs-toggle="modal" data-bs-target="#btn_i_delete">
+                                    HAPUS
+                                    </button>
                                 </div>
                                 <div class="row btn-level-2">
                                     <button class="btn btn-sm btn-danger">HAPUS</button>
@@ -972,6 +1009,33 @@ test
         });
         $('.dataTables_length').addClass('bs-select');
         });
+
+        // $( "#btn_i_delete_ya" ).click(function() {
+        //     alert( "Handler for .click() called." ); //do your code here
+
+            
+
+        //     var vr_id_rab = 14;
+            
+
+
+        //         $.ajax({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             },
+        //             url : "{{ url('rab_delete') }}",
+                    
+        //             type : 'POST',
+        //             dataType : 'json',
+        //             success : function(result){
+
+        //                 console.log("===== " + result + " =====");
+
+        //             }
+        //         });
+
+        // });
+        
     </script>
 @endpush
 {{-- End of Bagian Modal  --}}

@@ -11,10 +11,12 @@ Route::prefix('/login')->name('login.')->group(function() {
     Route::view('/', 'login')->name('view');
     Route::post('/', [AuthController::class, 'login'])->name('post');
 });
-
+ 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
 Route::middleware('auth')->group(function() {
+    
+   
     Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
     //Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
     Route::get('/dashboard', [RABController::class, 'rab_kegiatan'])->name('dashboard');
