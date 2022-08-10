@@ -88,5 +88,93 @@ class RABController extends Controller
             return redirect()->route('login.view');
         }
     }
+
+
+    public function addRab(Request $request) {
+        try{        
+            
+            $token = $request->token;                                            
+            $BASE_URL = env('API_URL');           
+            $api_url = "$BASE_URL/api/add/RabAdd";   
+            
+            //dd($token);
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                
+            CURLOPT_URL => $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'satker_id' => '656951',
+                'kode_program' => '076.CQ',
+                'kode_kegiatan' => '3356',
+                'kode_kro' => 'BAB',
+                'kode_komponen' => '005',
+                'kode_subkomponen' => 'AA',
+                'kode_ro' => '10'
+
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Cookie: perkasa2[JWT]='.$token
+            ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+
+            // =============
+
+            $token = $request->token;                                            
+            $BASE_URL = env('API_URL');           
+            $api_url = "$BASE_URL/api/add/RabRincianAdd";   
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL =>  $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'kode_akun' => '521211',
+                'uraian' => 'Service Komputer',
+                'volum' => '12',
+                'satuan' => 'unit',
+                'sbm' => '1080000.00',
+                'subtotal' => '10800000.00',
+                'id_rab' => '41'
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Cookie: perkasa2[JWT]='.$token
+            ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+            // ===========
+
+            return redirect()->back();
+        }catch(Exception $err) {
+            dd($err->getMessage());
+            Auth::logout();
+            return redirect()->route('login.view');
+        }
+    }
    
 }

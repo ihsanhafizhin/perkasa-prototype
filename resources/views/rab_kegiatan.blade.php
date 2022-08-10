@@ -895,7 +895,13 @@ foreach($arrays as $item) {
     <div style="padding-top:10%;" class="modal fade" id="akun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:red; color:white;width:150%; height:110%;">
+
+        <form action="{{ route('addrab') }}" method="POST">
+                @csrf
+                <input type="hidden" name="token" value="{{$token}}"/>
+
         <center>
+
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM AKUN RKA K/L</center></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -905,12 +911,14 @@ foreach($arrays as $item) {
 
         <div class="modal-header">
             <div class="kanan">
-                Kode Satker &nbsp: <input style="width: 70%;" type="text" name="" id=""><br><br>
-                Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input style="width: 70%;" type="text" name="" id=""><br><br>
+                Kode Satker &nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
+                
                 Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
+                
+                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
             </div>
             <div class="kiri">
-                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
+                
                 KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
                 RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
                 Komponen &nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value="" ></option></select>
@@ -919,11 +927,10 @@ foreach($arrays as $item) {
 
         <div class="modal-header">
             <div class="kirikuyy" style="margin-top:10px">
-            Sub Komponen : <input type="text" name="" id="">
+            Sub Komponen : <select name="" id=""><option value="" ></option></select>
             </div>
             <div class="kanankuyy">
-            Judul Sub Komp : <input type="text" name="" id="" 
-            style="border-radius: 20px;width: 50%;height: 50px;padding: 10px;"><br><br>
+            <br><br>
             </div>
         </div>
 
@@ -938,6 +945,8 @@ foreach($arrays as $item) {
         </div>
 
         </center>
+    </form>	
+
         </div>
     </div>
     </div> 

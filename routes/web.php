@@ -22,6 +22,7 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    Route::post('/addrab', [RABController::class, 'addRab'])->name('addrab');
     Route::post('/addrabnotepenyetuju', [RabNotePenyetujuController::class, 'addRabNotePenyetuju'])->name('addrabnotepenyetuju');
     Route::post('/addrabnotepenelaah', [RabNotePenelaahController::class, 'addrabnotepenelaah'])->name('addrabnotepenelaah');
     Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
