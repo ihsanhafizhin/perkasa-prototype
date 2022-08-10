@@ -8,13 +8,15 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class SatkerController extends Controller
+class AkunController extends Controller
 {
    
-    public function getSatker($token) {
+    
+
+    public function getAkun($token) {
         try{        
                                     
-            $api_url = "/api/list/satker";              
+            $api_url = "/api/list/AkunList";              
             $response = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
             
             return $response;

@@ -959,31 +959,136 @@ foreach($arrays as $item) {
                 
                 <br><br>
                 
-                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
+                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
+
+                <select name="cbo_kegiatan" id="cbo_kegiatan" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listkegiatan, true );
+
+                    $arrays = $array['kegiatan'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_kegiatan = $item['kode_kegiatan'];
+                        $nama_kegiatan = $item['nama_kegiatan'];
+                        echo "<option value='$kode_kegiatan'> $nama_kegiatan </option>";
+                    }
+                @endphp
+                
+            
+                </select>	
+            
+            
+            <br><br>
             </div>
             <div class="kiri">
                 
-                KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
-                RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
-                Komponen &nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value="" ></option></select>
+                KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
+                                            
+                <select name="cbo_kro" id="cbo_kro" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listkro, true );
+
+                    $arrays = $array['kro'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_kro = $item['kode_kro'];
+                        $nama_kro = $item['nama_kro'];
+                        echo "<option value='$kode_kro'> $nama_kro </option>";
+                    }
+                @endphp
+                
+            
+                </select>
+                
+
+                <br><br>
+                RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
+               
+
+                <select name="cbo_ro" id="cbo_ro" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listro, true );
+
+                    $arrays = $array['ro'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_ro = $item['kode_ro'];
+                        $nama_ro = $item['nama_ro'];
+                        echo "<option value='$kode_ro'> $nama_ro </option>";
+                    }
+                @endphp
+                
+            
+                </select>
+
             </div>
         </div>
 
         <div class="modal-header">
-            <div class="kirikuyy" style="margin-top:10px">
-            Sub Komponen : <select name="" id=""><option value="" ></option></select>
-            </div>
+            <!-- <div class="kirikuyy" style="margin-top:10px">                            
+            </div> -->
             <div class="kanankuyy">
+            Sub Komponen : 
+            <select name="cbo_subkomponen" id="cbo_subkomponen" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listsubKomponen, true );
+
+                    $arrays = $array['subkomponen'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_subkomponen = $item['kode_subkomponen'];
+                        $nama_subkomponen = $item['nama_subkomponen'];
+                        echo "<option value='$kode_subkomponen'> $nama_subkomponen </option>";
+                    }
+                @endphp
+                
+            
+            </select>
             <br><br>
             </div>
         </div>
 
         <div class="modal-body" align="center">
-        Kode Akun : <select name="" id=""><option value="" ></option></select>
+        Kode Akun : 
+        
+
+        <select name="cbo_akun" id="cbo_akun" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listakun, true );
+
+                    $arrays = $array['akun'];
+
+                    foreach($arrays as $item) {
+
+                        $kode = $item['kode'];
+                        $uraian = $item['uraian'];
+                        echo "<option value='$kode'> $uraian </option>";
+                    }
+                @endphp
+                
+            
+            </select>
+
+
         </div>
         
 
-        <div class="modal-body" style="margin-top:10%; margin-left:60%">
+        <div class="modal-body" style="margin-top:0%; margin-left:60%">
+            
             <input type="reset" name="" id="" value="Cancel" style="color:red">
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>

@@ -17,6 +17,15 @@ class RABController extends Controller
             $token = $request->token;   
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
+            $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
+            $listkros = app('App\Http\Controllers\KroController')->getKro($token); 
+            $listros = app('App\Http\Controllers\RoController')->getRo($token); 
+            $listsubKomponens = app('App\Http\Controllers\SubKomponenController')->getSubkomponen($token);
+            $listakuns = app('App\Http\Controllers\AkunController')->getAkun($token);
+            
+            
+            
+            
                                                      
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/list/kegiatan";            
@@ -44,7 +53,12 @@ class RABController extends Controller
                 'response' => $responses,
                 'listsatker' => $listsatkers,
                 'token' => $token,
-                'listprogram' => $listprograms
+                'listprogram' => $listprograms,
+                'listkegiatan' => $listkegiatans,
+                'listkro' => $listkros,
+                'listro' => $listros,
+                'listsubKomponen'  => $listsubKomponens,
+                'listakun'  => $listakuns,
              ]);
 
         }catch(Exception $err) {

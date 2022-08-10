@@ -8,15 +8,14 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class ProgramController extends Controller
+class KegiatanController extends Controller
 {
    
     
-
-    public function getProgram($token) {
+    public function getKegiatan($token) {
         try{        
                                     
-            $api_url = "/api/list/ProgramView";              
+            $api_url = "/api/list/KegiatanList";              
             $response = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
             
             return $response;
@@ -24,6 +23,10 @@ class ProgramController extends Controller
             return "";
         }
     }
+
+    
+
+
 
     public function addProgram(Request $request) {
         try{        
