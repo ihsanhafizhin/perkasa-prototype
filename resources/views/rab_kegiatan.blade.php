@@ -105,8 +105,11 @@ foreach($arrays as $item) {
 
             <!-- Modal Penelaah-->
             <div class="modal fade" id="notePenelaah" tabindex="-1" aria-labelledby="noteReviewer" aria-hidden="true">
-                <div class="modal-dialog">
-                <form action="">
+                <div class="modal-dialog">                    
+                <form action="{{ route('addrabnotepenelaah') }}" method="POST">
+                @csrf
+                <input type="hidden" name="token" value="{{$token}}"/>
+
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="notePenelaah">Tambahkan Note Penelaah</h5>
@@ -121,12 +124,12 @@ foreach($arrays as $item) {
                         </div>
                         <div class="form-groups">
                             <label for="">Note Penelaah</label>
-                            <input type="textarea" class="form-control">
+                            <input name="txt_Note_Penelaah" type="textarea" class="form-control">
                         </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>                        
                         </div>
                     </div>
                 </form>

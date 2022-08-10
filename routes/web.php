@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RABController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RabNotePenelaahController;
+
+
+
+
 Route::view('/', 'landing-page');
 
 // Route::view('/dashboard', 'layouts.layout-dashboard');
@@ -16,6 +21,7 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    Route::post('/addrabnotepenelaah', [RabNotePenelaahController::class, 'addrabnotepenelaah'])->name('addrabnotepenelaah');
     Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
     Route::post('/addProgram', [ProgramController::class, 'addProgram'])->name('addProgram');
     Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
