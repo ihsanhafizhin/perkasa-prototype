@@ -14,7 +14,10 @@ class RABController extends Controller
     public function rab_kegiatan(Request $request) {
         try{        
             
-            $token = $request->token;                                    
+            $token = $request->token;   
+            $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
+            $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
+                                                     
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/list/kegiatan";            
             $curl = curl_init();
@@ -36,13 +39,16 @@ class RABController extends Controller
 
             $responses = curl_exec($curl);
             curl_close($curl);
+            
             return view('rab_kegiatan', [
                 'response' => $responses,
-                'token' => $token
+                'listsatker' => $listsatkers,
+                'token' => $token,
+                'listprogram' => $listprograms
              ]);
 
         }catch(Exception $err) {
-            dd($err->getMessage());
+            
             Auth::logout();
             return redirect()->route('login.view');
         }
@@ -83,7 +89,7 @@ class RABController extends Controller
 
             return redirect()->back();
         }catch(Exception $err) {
-            dd($err->getMessage());
+            
             Auth::logout();
             return redirect()->route('login.view');
         }
@@ -92,7 +98,9 @@ class RABController extends Controller
 
     public function addRab(Request $request) {
         try{        
-            
+            dd($request->cbo_satker);
+
+
             $token = $request->token;                                            
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/RabAdd";   
@@ -171,7 +179,7 @@ class RABController extends Controller
 
             return redirect()->back();
         }catch(Exception $err) {
-            dd($err->getMessage());
+            
             Auth::logout();
             return redirect()->route('login.view');
         }

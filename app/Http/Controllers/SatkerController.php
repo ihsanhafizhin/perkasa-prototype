@@ -8,16 +8,16 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class ProgramController extends Controller
+class SatkerController extends Controller
 {
    
-    public function getProgram($tokens) {
+
+    public function getSatker($tokens) {
         try{        
              
-            $token = $tokens;   
-                                                           
+            $token = $tokens;                                                   
             $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/list/ProgramView";  
+            $api_url = "$BASE_URL/api/list/satker";  
 
             $curl = curl_init();
 
@@ -36,26 +36,12 @@ class ProgramController extends Controller
             ));
 
             $response = curl_exec($curl);
-
             curl_close($curl);
-           
-            return $response;
-        }catch(Exception $err) {            
-            return "";
-        }
-    }
-
-    public function addProgram(Request $request) {
-        try{        
             
-
-            $token = $request->token;                                    
-            dd($token);
-            return redirect()->back();
+            return $response;
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            return "";
         }
     }
    

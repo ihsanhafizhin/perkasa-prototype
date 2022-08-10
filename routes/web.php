@@ -6,7 +6,7 @@ use App\Http\Controllers\RABController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RabNotePenelaahController;
 use App\Http\Controllers\RabNotePenyetujuController;
-
+use App\Http\Controllers\SatkerController;
 
 
 
@@ -22,6 +22,7 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    Route::get('/getsatker', [SatkerController::class, 'getSatker'])->name('getsatker');
     Route::post('/addrab', [RABController::class, 'addRab'])->name('addrab');
     Route::post('/addrabnotepenyetuju', [RabNotePenyetujuController::class, 'addRabNotePenyetuju'])->name('addrabnotepenyetuju');
     Route::post('/addrabnotepenelaah', [RabNotePenelaahController::class, 'addrabnotepenelaah'])->name('addrabnotepenelaah');

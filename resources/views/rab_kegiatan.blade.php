@@ -728,7 +728,12 @@ foreach($arrays as $item) {
             <div class="modal-body">
                 Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
                 Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
-                Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
+                Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="">
+                
+                
+                <option value=""></option>
+            
+               </select>
             </div>
 
             <div class="modal-footer" style="margin-top:22%">
@@ -911,9 +916,48 @@ foreach($arrays as $item) {
 
         <div class="modal-header">
             <div class="kanan">
-                Kode Satker &nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
+                Kode Satker &nbsp: <select name="cbo_satker" id="cbo_satker" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listsatker, true );
+
+                    $arrays = $array['satker'];
+
+                    foreach($arrays as $item) {
+
+                        $satker_id = $item['satker_id'];
+                        $nama_satker = $item['nama_satker'];
+                        echo "<option value='$satker_id'> $nama_satker </option>";
+                    }
+                @endphp
                 
-                Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
+            
+                </select><br><br>
+
+                Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
+
+                <select name="cbo_program" id="cbo_program" style="width: 70%;" >
+                <option value="">  </option>
+                     @php
+
+                    $array = json_decode( $listprogram, true );
+
+                    $arrays = $array['program'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_program = $item['kode_program'];
+                        $nama_program = $item['nama_program'];
+                        echo "<option value='$kode_program'> $nama_program </option>";
+                    }
+                        @endphp
+                
+            
+                </select>
+                
+                
+                <br><br>
                 
                 Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
             </div>

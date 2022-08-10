@@ -40,7 +40,7 @@ class AuthController extends Controller
             return redirect()->route('dashboard',compact('token'));
          
         }catch(Exception $err) {
-            dd($err->getMessage());
+            
             Auth::logout();
             return redirect()->route('login.view');
         }
