@@ -112,8 +112,16 @@ class RABController extends Controller
 
     public function addRab(Request $request) {
         try{        
-            dd($request->cbo_satker);
+           
+            $cbo_satker = $request->cbo_satker;
+            $cbo_program = $request->cbo_program;
+            $cbo_kegiatan = $request->cbo_kegiatan;
+            $cbo_kro = $request->cbo_kro;
+            $cbo_ro = $request->cbo_ro;
+            $cbo_subkomponen = $request->cbo_subkomponen;
+            $cbo_akun = $request->cbo_akun;
 
+          
 
             $token = $request->token;                                            
             $BASE_URL = env('API_URL');           
@@ -134,13 +142,13 @@ class RABController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'satker_id' => '656951',
-                'kode_program' => '076.CQ',
-                'kode_kegiatan' => '3356',
-                'kode_kro' => 'BAB',
-                'kode_komponen' => '005',
-                'kode_subkomponen' => 'AA',
-                'kode_ro' => '10'
+                'satker_id' => $cbo_satker,
+                'kode_program' => $cbo_program,
+                'kode_kegiatan' => $cbo_kegiatan,
+                'kode_kro' => $cbo_kro,
+                'kode_komponen' => '',
+                'kode_subkomponen' => $cbo_subkomponen,
+                'kode_ro' => $cbo_ro
 
             ),
             CURLOPT_HTTPHEADER => array(
@@ -172,13 +180,13 @@ class RABController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'kode_akun' => '521211',
-                'uraian' => 'Service Komputer',
-                'volum' => '12',
-                'satuan' => 'unit',
-                'sbm' => '1080000.00',
-                'subtotal' => '10800000.00',
-                'id_rab' => '41'
+                'kode_akun' => $cbo_akun,
+                'uraian' => '',
+                'volum' => '',
+                'satuan' => '',
+                'sbm' => '',
+                'subtotal' => '',
+                'id_rab' => ''
             ),
             CURLOPT_HTTPHEADER => array(
                 'Cookie: perkasa2[JWT]='.$token
