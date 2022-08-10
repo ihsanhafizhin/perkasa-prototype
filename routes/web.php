@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RABController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RabNotePenelaahController;
+use App\Http\Controllers\RabNotePenyetujuController;
 
 
 
@@ -21,6 +22,7 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    Route::post('/addrabnotepenyetuju', [RabNotePenyetujuController::class, 'addRabNotePenyetuju'])->name('addrabnotepenyetuju');
     Route::post('/addrabnotepenelaah', [RabNotePenelaahController::class, 'addrabnotepenelaah'])->name('addrabnotepenelaah');
     Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
     Route::post('/addProgram', [ProgramController::class, 'addProgram'])->name('addProgram');
