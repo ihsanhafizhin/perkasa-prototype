@@ -1,57 +1,7 @@
 @extends('layouts.layout-dashboard')
 
 @section('content')
-
-
-@php
-
-$array = json_decode( $response, true );
-
-$arrays = $array['kegiatan'];
-echo "
-<table>
-";
-foreach($arrays as $item) {
-
-    $id_rab = $item['id'];
-
-    echo "
-            <tr>
-                <td>
-                                                <div class='row uraian-level-1'>
-                                                    <p>
-                                                        ";
-
-                                                        // echo $id_rab;
-
-                                                    echo "   
-                                                    </p>
-                                                </div>
-                                                
-                                                
-                </td>	
-            </tr>
-";
-
-}
-
-
-    echo"
-    </table>	
-    ";
-
-
-
-
-   
-    
-	
-
-    
-@endphp
-
 <div class="container-fluid container-content">
-
     <div class="row row-modal-button">
         <b>
             <a href="/" class="btn btn-success btn-add-rab" data-toggle="modal" data-target="#program" style="font-size:14px;"> + REKAM PROGRAM</a>
@@ -76,9 +26,7 @@ foreach($arrays as $item) {
             <!-- Modal Reviewer-->
             <div class="modal fade" id="noteReviewer" tabindex="-1" aria-labelledby="noteReviewer" aria-hidden="true">
                 <div class="modal-dialog">
-                <form action="{{ route('addrabnotepenyetuju') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
+                <form action="">
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="noteReviewer">Tambahkan Note Reviewer</h5>
@@ -93,12 +41,12 @@ foreach($arrays as $item) {
                         </div>
                         <div class="form-groups">
                             <label for="">Note Reviewer</label>
-                            <input name="txt_Note_Penyetuju" type="textarea" class="form-control">
+                            <input type="textarea" class="form-control">
                         </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                        <button type="button" class="btn btn-primary">Tambahkan</button>
                         </div>
                     </div>
                 </form>
@@ -107,11 +55,8 @@ foreach($arrays as $item) {
 
             <!-- Modal Penelaah-->
             <div class="modal fade" id="notePenelaah" tabindex="-1" aria-labelledby="noteReviewer" aria-hidden="true">
-                <div class="modal-dialog">                    
-                <form action="{{ route('addrabnotepenelaah') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
-
+                <div class="modal-dialog">
+                <form action="">
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="notePenelaah">Tambahkan Note Penelaah</h5>
@@ -126,51 +71,17 @@ foreach($arrays as $item) {
                         </div>
                         <div class="form-groups">
                             <label for="">Note Penelaah</label>
-                            <input name="txt_Note_Penelaah" type="textarea" class="form-control">
+                            <input type="textarea" class="form-control">
                         </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambahkan</button>                        
+                        <button type="button" class="btn btn-primary">Tambahkan</button>
                         </div>
                     </div>
                 </form>
                 </div>
             </div>
-
-            <div class="modal fade" id="btn_i_delete" tabindex="-1" aria-labelledby="btn_i_delete" aria-hidden="true">
-                <div class="modal-dialog">
-                <form action="{{ route('rab_delete') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="btn_i_delete">Informasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Primary Key">
-                        </div>
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
-                        </div>
-                        <div class="form-groups">
-                           <h5 class="modal-title" id="btn_i_delete">Apakah anda mau menghapus data ini ?</h5>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      
-
-                        <button id="btn_i_delete_ya" class="btn btn-primary" type="submit">Ya</button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-
-
         </b>
     </div>
     {{-- KONTEN TABLENYA --}}
@@ -599,10 +510,8 @@ foreach($arrays as $item) {
                                 </div>
                             </td>
                             <td class="kolom-aksi-rab">
-                                <div class="row btn-level-1">                                   
-                                    <button class="btn btn-sm btn-danger" type="button"  data-bs-toggle="modal" data-bs-target="#btn_i_delete">
-                                    HAPUS
-                                    </button>
+                                <div class="row btn-level-1">
+                                    <button class="btn btn-sm btn-danger">HAPUS</button>
                                 </div>
                                 <div class="row btn-level-2">
                                     <button class="btn btn-sm btn-danger">HAPUS</button>
@@ -708,47 +617,34 @@ foreach($arrays as $item) {
 
 {{-- Start of Bagian Modal --}}
 <div style="padding-top:10%;" class="modal fade" id="program" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-
-
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:mediumseagreen; color:white;width:150%; height:80%;">
-        <form action="{{ route('addProgram') }}" method="POST">
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/>
+        <center>
+        <div class="modal-header" style="padding-left:250px">
+            <h5 class="modal-title" id="exampleModalLabel"><center>REKAM PROGRAM RKA K/L</center></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
-            <center>
-            <div class="modal-header" style="padding-left:250px">
-                <h5 class="modal-title" id="exampleModalLabel"><center>REKAM PROGRAM RKA K/L</center></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="modal-body">
+            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
+        </div>
 
-            <div class="modal-body">
-                Id Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="id_program" id="idProgram"><br><br>
-                Kode Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_program" id="kodeProgram"><br><br>
-                Nama Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_program" id="namaProgram"><br><br>
-            </div>
-
-            <div class="modal-footer" style="margin-top:22%">
-                <input type="reset" name="" id="" value="Cancel" style="color:red">
-                <input type="submit" name="" id="" value="Tambah" style="color:blue">
-            </div>
-            </center>
-
-        </form>
+        <div class="modal-footer" style="margin-top:22%">
+            <input type="reset" name="" id="" value="Cancel" style="color:red">
+            <input type="submit" name="" id="" value="Tambah" style="color:blue">
+        </div>
+        </center>
         </div>
     </div>
-</div>   
+    </div>   
 
-<div style="padding-top:10%;" class="modal fade" id="kegiatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div style="padding-top:10%;" class="modal fade" id="kegiatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:green; color:white;width:150%; height:80%;">
-        <form action="{{ route('addKegiatan') }}" method="POST">   
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/> 
-            
         <center>
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM KEGIATAN RKA K/L</center></h5>
@@ -756,19 +652,13 @@ foreach($arrays as $item) {
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-   
+
         <div class="modal-body">
             <center>
-            Id Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="id_kegiatan" id="idKegiatan"><br><br>
-            Kode Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_kegiatan" id="kodeKegiatan"><br><br>
-            Kode Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="ddkode_program" id="ddKodeProgram"><br><br>
-            {{-- <select name="dd_kodeprogram" id="ddKodeProgram">
-                @foreach ($data as $value)
-                <option value="{{ $value->kode_program }}">{{ $value->kode_program }}</option>
-                @endforeach 
-            </select><br><br> --}}
-            Nama Kegiatan  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_kegiatan" id="namaKegiatan"><br><br>
-            
+            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
             </center>
         </div>
 
@@ -777,19 +667,13 @@ foreach($arrays as $item) {
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>
         </center>
-
-        </form>
         </div>
     </div>
-</div>   
+    </div>   
 
-<div style="padding-top:10%;" class="modal fade" id="kro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div style="padding-top:10%;" class="modal fade" id="kro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:cadetblue; color:white;width:150%; height:80%;">
-        <form action="{{ route('addKro') }}" method="POST">   
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/> 
-            
         <center>
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM KRO RKA K/L</center></h5>
@@ -797,40 +681,27 @@ foreach($arrays as $item) {
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-   
+
         <div class="modal-body">
-            <center>
-            Id KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="id_kro" id="idKro"><br><br>
-            Kode KRO  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_kro" id="kodeKro"><br><br>
-            Nama KRO  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_kro" id="namaKro"><br><br>
-            Kode Kegiatan &nbsp&nbsp&nbsp&nbsp: <input type="text" name="ddkode_kegiatan" id="ddKodeKegiatan"><br><br>
-            {{-- <select name="dd_kodeprogram" id="ddKodeProgram">
-                @foreach ($data as $value)
-                <option value="{{ $value->kode_program }}">{{ $value->kode_program }}</option>
-                @endforeach 
-            </select><br><br> --}}
-            
-            </center>
+            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
         </div>
 
-        <div class="modal-footer" style="margin-top:15%">
+        <div class="modal-footer" style="margin-top:5%">
             <input type="reset" name="" id="" value="Cancel" style="color:red">
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>
         </center>
-
-        </form>
         </div>
     </div>
-</div>
+    </div>
     
-<div style="padding-top:10%;" class="modal fade" id="ro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div style="padding-top:10%;" class="modal fade" id="ro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:blue; color:white;width:150%; height:80%;">
-        <form action="{{ route('addRo') }}" method="POST">   
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/> 
-            
         <center>
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM RO RKA K/L</center></h5>
@@ -838,41 +709,29 @@ foreach($arrays as $item) {
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-   
+
         <div class="modal-body">
-            <center>
-            Id RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="id_ro" id="idRo"><br><br>
-            Kode RO  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_ro" id="kodeRo"><br><br>
-            Kode KRO  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="ddkode_kro" id="ddKodeKro"><br><br>
-            Nama RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_ro" id="namaRo"><br><br>
-            {{-- <select name="dd_kodeprogram" id="ddKodeProgram">
-                @foreach ($data as $value)
-                <option value="{{ $value->kode_program }}">{{ $value->kode_program }}</option>
-                @endforeach 
-            </select><br><br> --}}
-            
-            </center>
+            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
         </div>
 
-        <div class="modal-footer" style="margin-top:15%">
+        <div class="modal-footer">
             <input type="reset" name="" id="" value="Cancel" style="color:red">
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>
         </center>
-
-        </form>
         </div>
     </div>
-</div>
+    </div>
 
     
     <div style="padding-top:10%;" class="modal fade" id="komponen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:darkorange; color:white;width:150%; height:90%;">
-        <form action="{{ route('addKomponen') }}" method="POST">   
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/> 
-            
         <center>
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM KOMPONEN RKA K/L</center></h5>
@@ -880,29 +739,22 @@ foreach($arrays as $item) {
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-   
+
         <div class="modal-body">
-            <center>
-            Id Komponen &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="id_komponen" id="idKomponen"><br><br>
-            Kode Komponen  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_komponen" id="kodeKomponen"><br><br>
-            Kode RO  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="ddkode_ro" id="ddKodeRO"><br><br>
-            Nama Komponen &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_komponen" id="namaKomponen"><br><br>
-            {{-- <select name="dd_kodeprogram" id="ddKodeProgram">
-                @foreach ($data as $value)
-                <option value="{{ $value->kode_program }}">{{ $value->kode_program }}</option>
-                @endforeach 
-            </select><br><br> --}}
-            
-            </center>
+            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Komponen &nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
         </div>
 
-        <div class="modal-footer" style="margin-top:15%">
+        <div class="modal-footer" style="margin:auto">
             <input type="reset" name="" id="" value="Cancel" style="color:red">
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>
         </center>
-
-        </form>
         </div>
     </div>
     </div>
@@ -910,39 +762,32 @@ foreach($arrays as $item) {
     <div style="padding-top:10%;" class="modal fade" id="subkomponen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:orangered; color:white;width:150%; height:115%;">
-        <form action="{{ route('addSubKomponen') }}" method="POST">   
-        @csrf
-        <input type="hidden" name="token" value="{{$token}}"/> 
-            
         <center>
         <div class="modal-header" style="padding-left:250px">
-            <h5 class="modal-title" id="exampleModalLabel"><center>REKAM SUBKOMPONEN RKA K/L</center></h5>
+            <h5 class="modal-title" id="exampleModalLabel"><center>REKAM SUB KOMPONEN RKA K/L</center></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-   
+
         <div class="modal-body">
-            <center>
-            Kode SubKomponen  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="kode_subkomponen" id="kodeSubKomponen"><br><br>
-            Kode Komponen  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="ddkode_komponen" id="ddKodeKomponen"><br><br>
-            Nama SubKomponen &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="nama_subkomponen" id="namaSubKomponen"><br><br>
-            {{-- <select name="dd_kodeprogram" id="ddKodeProgram">
-                @foreach ($data as $value)
-                <option value="{{ $value->kode_program }}">{{ $value->kode_program }}</option>
-                @endforeach 
-            </select><br><br> --}}
-            
-            </center>
+            Kode Satker  &nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Satker &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+            Program &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Kegiatan &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            KRO &nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            RO &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Komponen &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select><br><br>
+            Sub Komponen : <input type="text" name="" id=""><br><br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJudul Sub Komp : <input type="text" name="" id="" 
+            style="border-radius: 20px;width: 50%;height: 50px;padding: 10px;"><br><br>
         </div>
 
-        <div class="modal-footer" style="margin-top:15%">
+        <div class="modal-footer" style="margin:auto">
             <input type="reset" name="" id="" value="Cancel" style="color:red">
             <input type="submit" name="" id="" value="Tambah" style="color:blue">
         </div>
         </center>
-
-        </form>
         </div>
     </div>
     </div>
@@ -950,13 +795,7 @@ foreach($arrays as $item) {
     <div style="padding-top:10%;" class="modal fade" id="akun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:red; color:white;width:150%; height:110%;">
-
-        <form action="{{ route('addrab') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
-
         <center>
-
         <div class="modal-header" style="padding-left:250px">
             <h5 class="modal-title" id="exampleModalLabel"><center>REKAM AKUN RKA K/L</center></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -966,14 +805,12 @@ foreach($arrays as $item) {
 
         <div class="modal-header">
             <div class="kanan">
-                Kode Satker &nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
-                
+                Kode Satker &nbsp: <input style="width: 70%;" type="text" name="" id=""><br><br>
+                Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input style="width: 70%;" type="text" name="" id=""><br><br>
                 Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;" ><option value=""></option></select><br><br>
-                
-                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
             </div>
             <div class="kiri">
-                
+                Kegiatan &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
                 KRO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
                 RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value=""></option></select><br><br>
                 Komponen &nbsp&nbsp&nbsp: <select name="" id="" style="width: 70%;"><option value="" ></option></select>
@@ -982,10 +819,11 @@ foreach($arrays as $item) {
 
         <div class="modal-header">
             <div class="kirikuyy" style="margin-top:10px">
-            Sub Komponen : <select name="" id=""><option value="" ></option></select>
+            Sub Komponen : <input type="text" name="" id="">
             </div>
             <div class="kanankuyy">
-            <br><br>
+            Judul Sub Komp : <input type="text" name="" id="" 
+            style="border-radius: 20px;width: 50%;height: 50px;padding: 10px;"><br><br>
             </div>
         </div>
 
@@ -1000,8 +838,6 @@ foreach($arrays as $item) {
         </div>
 
         </center>
-    </form>	
-
         </div>
     </div>
     </div> 
@@ -1077,7 +913,7 @@ foreach($arrays as $item) {
         </div>
     </div>
 </div>
-test
+
 @push('js-table')
     <script>
         $(document).ready(function () {
@@ -1087,33 +923,6 @@ test
         });
         $('.dataTables_length').addClass('bs-select');
         });
-
-        // $( "#btn_i_delete_ya" ).click(function() {
-        //     alert( "Handler for .click() called." ); //do your code here
-
-            
-
-        //     var vr_id_rab = 14;
-            
-
-
-        //         $.ajax({
-        //             headers: {
-        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //             },
-        //             url : "{{ url('rab_delete') }}",
-                    
-        //             type : 'POST',
-        //             dataType : 'json',
-        //             success : function(result){
-
-        //                 console.log("===== " + result + " =====");
-
-        //             }
-        //         });
-
-        // });
-        
     </script>
 @endpush
 {{-- End of Bagian Modal  --}}

@@ -8,22 +8,23 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class ProgramController extends Controller
+class KegiatanController extends Controller
 {
    
 
-    public function addProgram(Request $request) {
+    public function addKegiatan(Request $request) {
         try{        
             
 
             $token = $request->token;      
             
             $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/add/program";
+            $api_url = "$BASE_URL/api/add/kegiatan";
 
-            $kode_program = $request->input('kode_program');
-            $nama_program = $request->input('nama_program');
-            $id_program = $request->input('id_program');
+            $id_kegiatan = $request->input('id_kegiatan');
+            $kode_kegiatan = $request->input('kode_kegiatan');
+            $ddkode_program = $request->input('ddkode_program');
+            $nama_kegiatan = $request->input('nama_kegiatan');
 
             $curl = curl_init();
 
@@ -37,9 +38,10 @@ class ProgramController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'id' => $id_program,
-                'kode_program' => $kode_program,
-                'nama_program' => $nama_program,
+                'id' => $id_kegiatan,
+                'kode_kegiatan' => $kode_kegiatan,
+                'nama_kegiatan' => $nama_kegiatan,
+                'kode_program' => $ddkode_program
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$token,

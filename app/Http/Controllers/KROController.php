@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Helpers\JWTHelper;
 use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class ProgramController extends Controller
+class KROController extends Controller
 {
-   
-
-    public function addProgram(Request $request) {
+    public function addKro(Request $request) {
         try{        
             
 
             $token = $request->token;      
             
             $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/add/program";
+            $api_url = "$BASE_URL/api/add/kro";
 
-            $kode_program = $request->input('kode_program');
-            $nama_program = $request->input('nama_program');
-            $id_program = $request->input('id_program');
+            $id_kro = $request->input('id_kro');
+            $kode_kro = $request->input('kode_kro');
+            $ddkode_kegiatan = $request->input('ddkode_kegiatan');
+            $nama_kro = $request->input('nama_kro');
 
             $curl = curl_init();
 
@@ -37,9 +36,10 @@ class ProgramController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'id' => $id_program,
-                'kode_program' => $kode_program,
-                'nama_program' => $nama_program,
+                'id' => $id_kro,
+                'kode_kro' => $kode_kro,
+                'nama_kro' => $nama_kro,
+                'kode_kegiatan' => $ddkode_kegiatan
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$token,
@@ -58,5 +58,4 @@ class ProgramController extends Controller
             return redirect()->route('login.view');
         }
     }
-   
 }

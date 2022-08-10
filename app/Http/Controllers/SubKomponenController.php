@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Helpers\JWTHelper;
 use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 
-class ProgramController extends Controller
+class SubKomponenController extends Controller
 {
-   
-
-    public function addProgram(Request $request) {
+    public function addSubKomponen(Request $request) {
         try{        
             
 
             $token = $request->token;      
             
             $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/add/program";
+            $api_url = "$BASE_URL/api/add/subkomponen";
 
-            $kode_program = $request->input('kode_program');
-            $nama_program = $request->input('nama_program');
-            $id_program = $request->input('id_program');
+            $kode_subkomponen = $request->input('kode_subkomponen');
+            $ddkode_komponen = $request->input('ddkode_komponen');
+            $nama_subkomponen = $request->input('nama_subkomponen');
 
             $curl = curl_init();
 
@@ -37,9 +35,9 @@ class ProgramController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'id' => $id_program,
-                'kode_program' => $kode_program,
-                'nama_program' => $nama_program,
+                'kode_subkomponen' => $kode_subkomponen,
+                'nama_subkomponen' => $nama_subkomponen,
+                'kode_komponen' => $ddkode_komponen
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$token,
@@ -58,5 +56,4 @@ class ProgramController extends Controller
             return redirect()->route('login.view');
         }
     }
-   
 }

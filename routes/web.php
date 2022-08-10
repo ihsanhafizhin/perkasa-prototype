@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RABController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KROController;
+use App\Http\Controllers\ROController;
+use App\Http\Controllers\KomponenController;
+use App\Http\Controllers\SubKomponenController;
 use App\Http\Controllers\RabNotePenelaahController;
 use App\Http\Controllers\RabNotePenyetujuController;
 
@@ -27,6 +32,11 @@ Route::middleware('auth')->group(function() {
     Route::post('/addrabnotepenelaah', [RabNotePenelaahController::class, 'addrabnotepenelaah'])->name('addrabnotepenelaah');
     Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
     Route::post('/addProgram', [ProgramController::class, 'addProgram'])->name('addProgram');
+    Route::post('/addKegiatan', [KegiatanController::class, 'addKegiatan'])->name('addKegiatan');
+    Route::post('/addKro', [KROController::class, 'addKro'])->name('addKro');
+    Route::post('/addRo', [ROController::class, 'addRo'])->name('addRo');
+    Route::post('/addKomponen', [KomponenController::class, 'addKomponen'])->name('addKomponen');
+    Route::post('/addSubKomponen', [SubKomponenController::class, 'addSubKomponen'])->name('addSubKomponen');
     Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
     //Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
     Route::get('/dashboard', [RABController::class, 'rab_kegiatan'])->name('dashboard');
