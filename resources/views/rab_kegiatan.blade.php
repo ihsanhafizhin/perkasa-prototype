@@ -22,7 +22,7 @@ foreach($arrays as $item) {
                                                     <p>
                                                         ";
 
-                                                        echo $id_rab;
+                                                        // echo $id_rab;
 
                                                     echo "   
                                                     </p>
