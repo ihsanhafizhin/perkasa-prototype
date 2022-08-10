@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RABController;
+use App\Http\Controllers\ProgramController;
 Route::view('/', 'landing-page');
 
 // Route::view('/dashboard', 'layouts.layout-dashboard');
@@ -13,10 +14,10 @@ Route::prefix('/login')->name('login.')->group(function() {
 });
  
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
+
 Route::middleware('auth')->group(function() {
-    
-   
+    Route::post('/rab_delete', [RABController::class, 'rab_delete'])->name('rab_delete');
+    Route::post('/addProgram', [ProgramController::class, 'addProgram'])->name('addProgram');
     Route::view('/chart', 'dashboard_chart')->name('dashboard-chart');
     //Route::view('/dashboard', 'rab_kegiatan')->name('dashboard');
     Route::get('/dashboard', [RABController::class, 'rab_kegiatan'])->name('dashboard');

@@ -703,27 +703,36 @@ foreach($arrays as $item) {
 
 {{-- Start of Bagian Modal --}}
 <div style="padding-top:10%;" class="modal fade" id="program" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
     <div class="modal-dialog" role="document" style="margin-right:40%">
         <div class="modal-content" style="background-color:mediumseagreen; color:white;width:150%; height:80%;">
-        <center>
-        <div class="modal-header" style="padding-left:250px">
-            <h5 class="modal-title" id="exampleModalLabel"><center>REKAM PROGRAM RKA K/L</center></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <form action="{{ route('addProgram') }}" method="POST">
+        @csrf
+        <input type="hidden" name="token" value="{{$token}}"/>
 
-        <div class="modal-body">
-            Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
-            Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
-            Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
-        </div>
+            <center>
+            <div class="modal-header" style="padding-left:250px">
+                <h5 class="modal-title" id="exampleModalLabel"><center>REKAM PROGRAM RKA K/L</center></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-        <div class="modal-footer" style="margin-top:22%">
-            <input type="reset" name="" id="" value="Cancel" style="color:red">
-            <input type="submit" name="" id="" value="Tambah" style="color:blue">
-        </div>
-        </center>
+            <div class="modal-body">
+                Kode Satker &nbsp: <input type="text" name="" id=""><br><br>
+                Satker &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" name="" id=""><br><br>
+                Program &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <select name="" id=""><option value=""></option></select>
+            </div>
+
+            <div class="modal-footer" style="margin-top:22%">
+                <input type="reset" name="" id="" value="Cancel" style="color:red">
+                <input type="submit" name="" id="" value="Tambah" style="color:blue">
+            </div>
+            </center>
+
+        </form>
         </div>
     </div>
     </div>   
