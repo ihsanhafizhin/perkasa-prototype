@@ -1037,6 +1037,25 @@ foreach($arrays as $item) {
             <!-- <div class="kirikuyy" style="margin-top:10px">                            
             </div> -->
             <div class="kanankuyy">
+            
+            Komponen : 
+            <select name="cbo_komponen" id="cbo_komponen" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listkomponen, true );
+
+                    $arrays = $array['komponen'];
+
+                    foreach($arrays as $item) {
+
+                        $kode_komponen = $item['kode_komponen'];
+                        $nama_komponen = $item['nama_komponen'];
+                        echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                    }
+                @endphp
+                </select>
+            <br><br>   
             Sub Komponen : 
             <select name="cbo_subkomponen" id="cbo_subkomponen" style="width: 70%;" >
                 <option value="">  </option>

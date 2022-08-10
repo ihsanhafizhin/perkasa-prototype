@@ -22,6 +22,7 @@ class RABController extends Controller
             $listros = app('App\Http\Controllers\RoController')->getRo($token); 
             $listsubKomponens = app('App\Http\Controllers\SubKomponenController')->getSubkomponen($token);
             $listakuns = app('App\Http\Controllers\AkunController')->getAkun($token);
+            $listkomponens = app('App\Http\Controllers\KomponenController')->getKomponen($token);
             
             
             
@@ -59,6 +60,7 @@ class RABController extends Controller
                 'listro' => $listros,
                 'listsubKomponen'  => $listsubKomponens,
                 'listakun'  => $listakuns,
+                'listkomponen'  => $listkomponens
              ]);
 
         }catch(Exception $err) {
@@ -120,6 +122,8 @@ class RABController extends Controller
             $cbo_ro = $request->cbo_ro;
             $cbo_subkomponen = $request->cbo_subkomponen;
             $cbo_akun = $request->cbo_akun;
+            $cbo_komponen = $request->cbo_komponen;
+            
 
           
 
@@ -146,7 +150,7 @@ class RABController extends Controller
                 'kode_program' => $cbo_program,
                 'kode_kegiatan' => $cbo_kegiatan,
                 'kode_kro' => $cbo_kro,
-                'kode_komponen' => '',
+                'kode_komponen' => $cbo_komponen,
                 'kode_subkomponen' => $cbo_subkomponen,
                 'kode_ro' => $cbo_ro
 
