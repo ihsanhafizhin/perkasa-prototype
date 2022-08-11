@@ -10,7 +10,19 @@ use Illuminate\Support\Facades\{Auth, Hash, Http};
 
 class RabrincianController extends Controller
 {
-       
+    
+    public function getRabrincian($token) {
+        try{        
+                                    
+            $api_url = "/api/list/RabRincianView";              
+            $response = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
+            
+            return $response;
+        }catch(Exception $err) {            
+            return "";
+        }
+    }
+
     public function addRabRincian(Request $request) {
         try{        
            

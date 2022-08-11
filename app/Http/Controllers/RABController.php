@@ -22,34 +22,9 @@ class RABController extends Controller
             $listsubKomponens = app('App\Http\Controllers\SubKomponenController')->getSubkomponen($token);
             $listakuns = app('App\Http\Controllers\AkunController')->getAkun($token);
             $listkomponens = app('App\Http\Controllers\KomponenController')->getKomponen($token);
-            
-            
-
-            
-            $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/list/kegiatan";            
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => $api_url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Authorization: Bearer '.$token,
-                'Cookie: perkasa2[JWT]='.$token
-            ),
-            ));
-
-            $responses = curl_exec($curl);
-            curl_close($curl);
-            
-            return view('rab_kegiatan', [
-                'response' => $responses,
+            $listrabrincians = app('App\Http\Controllers\RabrincianController')->getRabrincian($token);
+                                
+            return view('rab_kegiatan', [                
                 'listsatker' => $listsatkers,
                 'token' => $token,
                 'listprogram' => $listprograms,
@@ -58,7 +33,8 @@ class RABController extends Controller
                 'listro' => $listros,
                 'listsubKomponen'  => $listsubKomponens,
                 'listakun'  => $listakuns,
-                'listkomponen'  => $listkomponens
+                'listkomponen'  => $listkomponens,
+                'listrabrincian'  => $listrabrincians                
              ]);
 
         }catch(Exception $err) {

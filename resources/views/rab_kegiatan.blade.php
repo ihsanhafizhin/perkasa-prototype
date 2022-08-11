@@ -2,54 +2,6 @@
 
 @section('content')
 
-
-@php
-
-$array = json_decode( $response, true );
-
-$arrays = $array['kegiatan'];
-echo "
-<table>
-";
-foreach($arrays as $item) {
-
-    $id_rab = $item['id'];
-
-    echo "
-            <tr>
-                <td>
-                                                <div class='row uraian-level-1'>
-                                                    <p>
-                                                        ";
-
-                                                        // echo $id_rab;
-
-                                                    echo "   
-                                                    </p>
-                                                </div>
-                                                
-                                                
-                </td>	
-            </tr>
-";
-
-}
-
-
-    echo"
-    </table>	
-    ";
-
-
-
-
-   
-    
-	
-
-    
-@endphp
-
 <div class="container-fluid container-content">
 
     <div class="row row-modal-button">
@@ -192,511 +144,74 @@ foreach($arrays as $item) {
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
+
+                    @php
+
+                    $array = json_decode( $listrabrincian, true );
+
+                    $arrays = $array['rab_rincian'];
+           
+                    foreach($arrays as $item) {
+
+                        
+
+                        echo "
+
                         <tr>
-                            <th scope="row">
-                                <div class="row level-1">
-                                    <p>
-                                        076.01.CQ
-                                    </p>
-                                    <div>
-                                        <div class="row level-2">
-                                            <p style="margin-left:10px">
-                                                6709
-                                            </p>
-                                            <div>
-                                                <div class="row level-3">
-                                                    <p style="margin-left:20px">
-                                                        QGE
-                                                    </p>
-                                                    <div>
-                                                        <div class="row level-4">
-                                                            <p style="margin-left:30px">
-                                                                001
-                                                            </p>
-                                                            <div class="row level-5">
-                                                                <p style="margin-left:40px">
-                                                                    113
-                                                                </p>
-                                                                <div class="row level-6">
-                                                                    <p style="margin-left:50px">
-                                                                        A
-                                                                    </p>
-                                                                    <div>
-                                                                        <div class="row level-7">
-                                                                            <p style="margin-left:60px">
-                                                                                521211
-                                                                            </p>
-                                                                            <div>
-                                                                                <div class="row level-8 ">
-                                                                                    <p style="margin-left:80px">
-                                                                                        01
-                                                                                    </p>
-                                                                                    <div class="row level-8 ">
-                                                                                        <p style="margin-left:80px">
-                                                                                            02
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row level-7">
-                                                                            <p style="margin-left:60px">
-                                                                                524114
-                                                                            </p>
-                                                                            <div>
-                                                                                <div class="row level-8 ">
-                                                                                    <p style="margin-left:80px">
-                                                                                        01
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row level-6">
-                                                                    <p style="margin-left:50px">
-                                                                        B
-                                                                    </p>
-                                                                <div class="row level-7">
-                                                                    <p style="margin-left:60px">
-                                                                        524114
-                                                                    </p>
-                                                                    <div class="row level-8">
-                                                                        <p style="margin-left:80px">
-                                                                            01
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </th>
-        
                             <td>
-                                <div class="row uraian-level-1">
-                                    <p>
-                                        Penyelenggaraan Pemilu dalam Proses Konsolidasi Demokrasi
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-2">
-                                    <p>
-                                        Perencanaan Program dan Anggaran, serta Penyusunan Peraturan Pelaksanaan Penyelenggaraan Pemilu
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-3">
-                                    <p>
-                                        Tata Kelola Kelembagaan Publik Bidang Politik dan Hukum
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-4">
-                                    <p>
-                                        Perencanaan dan Penganggaran Pemilu
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-5">
-                                    <p>
-                                        Dukungan Operasional Pelaksanaan Lainnya
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-6">
-                                    <p>
-                                        PENGELOLAAN PROGRAM DAN ANGGARAN PEMILU DAN PEMILIHAN SERENTAK
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-7">
-                                    <p>
-                                        Belanja Bahan
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-8">
-                                    <p>
-                                        ATK Kegiatan
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-8">
-                                    <p>
-                                        Penggandaan dan Pencetakan
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-7">
-                                    <p>
-                                        Belanja Perjalanan Dinas Paket Meet Dalam Kota
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-8">
-                                    <p>
-                                         Paket Meeting
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-6">
-                                    <p>
-                                         SOSIALISASI JUNIS ANGGARAN DAN PENGELOLAAN KEUANGAN
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-7">
-                                    <p>
-                                         Belanja Perjalanan Dinas Paket Meeting Dalam Kota
-                                    </p>
-                                </div>
-                                <div class="row uraian-level-8">
-                                    <p>
-                                         Paket Meeting
-                                    </p>
-                                </div>
+                            ";
+                                echo $item['kode_akun'];
+                                echo "
                             </td>
                             <td>
-                                <div class="row volume-level-1">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-2">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-3">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-4">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-5">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-8">
-                                    <p>10</p>
-                                </div>
-                                <div class="row volume-level-8">
-                                    <p>100</p>
-                                </div>
-                                <div class="row volume-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-8">
-                                    <p>60</p>
-                                </div>
-                                <div class="row volume-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row volume-level-8">
-                                    <p>20</p>
-                                </div>
+                                ";
+                                echo $item['uraian'];
+                                echo "
                             </td>
                             <td>
-                                <div class="row satuan-level-1">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-2">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-3">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-4">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-5">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>OB</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>BUAH</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>OK</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>OK</p>
-                                </div>
+                            ";
+                                echo $item['volum'];
+                                echo "
                             </td>
                             <td>
-                                <div class="row satuan-level-1">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-2">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-3">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-4">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-5">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>100.000</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>5.000</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>500.000</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>500.000</p>
-                                </div>
+                            ";
+                                echo $item['satuan'];
+                                echo "
                             </td>
                             <td>
-                                <div class="row jumlah-level-1">
-                                    <p class="">
-                                        41.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-2">
-                                    <p class="">
-                                        41.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-3">
-                                    <p class="">
-                                        41.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-4">
-                                    <p class="">
-                                        41.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-5">
-                                    <p class="">
-                                        41.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-6">
-                                    <p class="">
-                                        31.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-7">
-                                    <p class="">
-                                        1.500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-8">
-                                    <p class="">
-                                        1.000.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-8">
-                                    <p class="">
-                                        500.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-7">
-                                    <p class="">
-                                        30.000.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-8">
-                                    <p class="">
-                                        30.000.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-6">
-                                    <p class="">
-                                        10.000.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-7">
-                                    <p class="">
-                                        10.000.000
-                                    </p>
-                                </div>
-                                <div class="row jumlah-level-8">
-                                    <p class="">
-                                        10.000.000
-                                    </p>
-                                </div>
+                            ";
+                                echo $item['sbm'];
+                                echo "
                             </td>
                             <td>
-                                <div class="row ket-level-1">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-2">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-3">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-4">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-5">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row ket-level-8">
-                                    <p>-</p>
-                                </div>
+                            ";
+                                echo $item['subtotal'];
+                                echo "
                             </td>
-                            <td class="kolom-aksi-rab">
-                                <div class="row btn-level-1">                                   
-                                    <button class="btn btn-sm btn-danger" type="button"  data-bs-toggle="modal" data-bs-target="#btn_i_delete">
+                            <td>
+                                -
+                            </td>
+                           
+                            <td>                                                        
+                                    <button class='btn btn-sm btn-warning'>EDIt</button>
+                                    <button class='btn btn-sm btn-primary'>COPY</button>
+
+                                     <button class='btn btn-sm btn-danger' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_delete'>
                                     HAPUS
                                     </button>
-                                </div>
-                                <div class="row btn-level-2">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-3">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-4">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-5">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-6">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-7">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row d-flex btn-level-8">
-                                    <button class="btn btn-sm btn-warning">EDIt</button>
-                                    <button class="btn btn-sm btn-primary">COPY</button>
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-8">
-                                    <button class="btn btn-sm btn-warning">EDIt</button>
-                                    <button class="btn btn-sm btn-primary">COPY</button>
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-7">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-8">
-                                    <button class="btn btn-sm btn-warning">EDIt</button>
-                                    <button class="btn btn-sm btn-primary">COPY</button>
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-6">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-7">
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
-                                <div class="row btn-level-8">
-                                    <button class="btn btn-sm btn-warning">EDIt</button>
-                                    <button class="btn btn-sm btn-primary">COPY</button>
-                                    <button class="btn btn-sm btn-danger">HAPUS</button>
-                                </div>
+                                                                  
                             </td>
                             <td>
-                                <div class="row satuan-level-1">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-2">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-3">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-4">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-5">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-6">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-7">
-                                    <p>-</p>
-                                </div>
-                                <div class="row satuan-level-8">
-                                    <p>-</p>
-                                </div>
+                                -
+
                             </td>
                         </tr>
+
+                        ";
+
+                    }
+
+                        @endphp
                     </tbody>
                 </table>
             </div>
@@ -1376,7 +891,7 @@ foreach($arrays as $item) {
         </div>
     </div>
 </div>
-test
+
 @push('js-table')
     <script>
         $(document).ready(function () {
