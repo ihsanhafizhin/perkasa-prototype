@@ -18,27 +18,33 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>  
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button></td>
-              </tr>
+                @php
+
+                $array = json_decode( $listkro, true );
+
+                $arrays = $array['kro'];
+
+                foreach($arrays as $item) {
+
+                    $kro_id = $item['id'];
+                    $nama_kro = $item['nama_kro'];
+                    $kode_kro = $item['kode_kro'];
+                    $kode_kegiatan = $item['kode_kegiatan'];
+                    echo "
+                    <tr>
+                        <th>$kode_kro</th>
+                        <th>$kode_kegiatan</th>
+                        <td>$nama_kro</td>
+                        <td>$kro_id</td>
+                        <td>
+                            <button class='btn btn-primary'>View</button>
+                            <button class='btn btn-warning'>Edit</button>
+                            <button class='btn btn-danger'>Delete</button>
+                        </td>
+                    </tr>
+                    ";
+                    }
+                @endphp
             </tbody>
           </table>
           <!-- Button trigger modal -->
@@ -49,7 +55,8 @@
             <!-- Modal -->
             <div class="modal fade" id="formAddUnitKerja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                <form action="">
+                <form action="{{ route('addKro') }}" method="POST">
+                    @csrf
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambahkan KRO</h5>
@@ -58,29 +65,39 @@
                         <div class="modal-body">
                         <div class="form-groups">
                             <label for="">Kode KRO</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="kode_kro" id="kodeKro" class="form-control">
                         </div>
                         <div class="form-groups">
                             <label for="">Kode Kegiatan</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>#</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" name="ddkode_kegiatan" aria-label="Default select example">
+                                <option selected></option>
+                                @php
+
+                                $array = json_decode( $listkegiatan, true );
+
+                                $arrays = $array['kegiatan'];
+
+                                foreach($arrays as $item) {
+
+                                    $kegiatan_id = $item['id'];
+                                    $kode_kegiatan = $item['kode_kegiatan'];
+                                    echo "<option value='$kode_kegiatan'> $kode_kegiatan </option>";
+                                    }
+                                @endphp
                               </select>
                         </div>
                         <div class="form-groups">
                             <label for="">Nama KRO</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="nama_kro" class="form-control">
                         </div>
                         <div class="form-groups">
                             <label for="">Id</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="id_kro" class="form-control">
                         </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>
                         </div>
                     </div>
                 </form>

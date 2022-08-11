@@ -17,25 +17,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td>
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td>  
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button></td>
-              </tr>
+                @php
+
+                $array = json_decode( $listsubKomponen, true );
+
+                $arrays = $array['subkomponen'];
+
+                foreach($arrays as $item) {
+
+                    $nama_subkomponen = $item['nama_subkomponen'];
+                    $kode_subkomponen = $item['kode_subkomponen'];
+                    $kode_komponen = $item['kode_komponen'];
+                    echo "
+                    <tr>
+                        <th>$kode_subkomponen</th>
+                        <th>$kode_komponen</th>
+                        <td>$nama_subkomponen</td>
+                        <td>
+                            <button class='btn btn-primary'>View</button>
+                            <button class='btn btn-warning'>Edit</button>
+                            <button class='btn btn-danger'>Delete</button>
+                        </td>
+                    </tr>
+                    ";
+                    }
+                @endphp
             </tbody>
           </table>
           <!-- Button trigger modal -->
@@ -46,7 +52,8 @@
             <!-- Modal -->
             <div class="modal fade" id="formAddUnitKerja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                <form action="">
+                <form action="{{ route('addSubKomponen') }}" method="POST">
+                    @csrf
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambahkan Sub Komponen</h5>
@@ -55,20 +62,35 @@
                         <div class="modal-body">
                         <div class="form-groups">
                             <label for="">Kode Sub Komponen</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="kode_subkomponen" class="form-control">
                         </div>
                         <div class="form-groups">
                             <label for="">Kode Komponen</label>
-                            <input type="text" class="form-control">
+                            <select class="form-select" name="ddkode_komponen" aria-label="Default select example">
+                                <option selected></option>
+                                @php
+
+                                $array = json_decode( $listkomponen, true );
+
+                                $arrays = $array['komponen'];
+
+                                foreach($arrays as $item) {
+
+                                    $komponen_id = $item['id'];
+                                    $kode_komponen = $item['kode_komponen'];
+                                    echo "<option value='$kode_komponen'> $kode_komponen </option>";
+                                    }
+                                @endphp
+                              </select>
                         </div>
                         <div class="form-groups">
                             <label for="">Nama Sub Komponen</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="nama_subkomponen" class="form-control">
                         </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>
                         </div>
                     </div>
                 </form>
