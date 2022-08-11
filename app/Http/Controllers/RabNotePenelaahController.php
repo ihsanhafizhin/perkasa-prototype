@@ -47,5 +47,33 @@ class RabNotePenelaahController extends Controller
             return redirect()->route('login.view');
         }
     }
+
+    // public function addRabNotePenelaah(Request $request) {
+    //     try{        
+           
+    //         $token = $request->token; 
+    //         $api_url = "/api/add/rab_note_penelaah";  
+
+    //         $txt_Note_Penelaah = $request->txt_Note_Penelaah;
+            
+    //         //  $vArray = "array(
+    //         //     'note' => $txt_Note_Penelaah                
+    //         // )";
+
+    //          $vArray ="'note' => $txt_Note_Penelaah";
+    //         // $vArray = array(
+    //         //     'note' => $txt_Note_Penelaah
+    //         // );
+
+                            
+    //         app('App\Http\Controllers\CURLController')->curlAdd($token,$api_url,$vArray);    
+    //         return redirect()->back();                             
+
+    //     }catch(Exception $err) {
+
+    //     }
+    // }  
+
+    
    
 }
