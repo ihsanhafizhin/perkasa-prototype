@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
+use Illuminate\Support\Facades\Cookie;
 
 
 
@@ -37,7 +38,13 @@ class AuthController extends Controller
             );
             $token = $response->JWT;                       
             Auth::login($user);
-            return redirect()->route('dashboard',compact('token'));
+
+
+            
+            Cookie::queue('access_token', $token);
+            
+            
+            return redirect()->route('dashboard');
          
         }catch(Exception $err) {
             

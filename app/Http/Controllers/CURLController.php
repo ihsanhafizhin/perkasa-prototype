@@ -49,7 +49,7 @@ class CURLController extends Controller
 
     public function curlAdd($tokens,$api_urls,$vArray) {
         try{
-            
+            //dd($vArray);
             $token = $tokens;                                              
             $BASE_URL = env('API_URL');           
             $api_url = $BASE_URL.$api_urls;    
@@ -66,6 +66,7 @@ class CURLController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
+            // CURLOPT_POSTFIELDS => array($vArray),
             CURLOPT_POSTFIELDS => $vArray,
             CURLOPT_HTTPHEADER => array(
                 'Cookie: perkasa2[JWT]='.$token

@@ -18,13 +18,39 @@ class RabrincianController extends Controller
             $api_url = "/api/add/RabRincianAdd";  
 
             $cbo_akun = $request->cbo_akun;
-            $vArray = "array(
+            $txt_d_uraian = $request->txt_d_uraian;
+            $txt_volume = $request->txt_volume;
+            $txt_satuan = $request->txt_satuan;
+            $txt_harga = $request->txt_harga;
+            $txt_total = $request->txt_total;
+            
+            // $vArray = "array(
+            //     'kode_akun' => $cbo_akun,
+            //     'uraian' => $txt_d_uraian,
+            //     'volum' => $txt_volume,
+            //     'satuan' => $txt_satuan,
+            //     'sbm' => $txt_harga,
+            //     'subtotal' => $txt_total,
+            //     'id_rab' => ''
+            // )";
+
+            // $vArray = array(
+            //     'kode_akun' => $cbo_akun,
+            //     'uraian' => $txt_d_uraian,
+            //     'volum' => $txt_volume,
+            //     'satuan' => $txt_satuan,
+            //     'sbm' => $txt_harga,
+            //     'subtotal' => $txt_total,
+            //     'id_rab' => ''
+            // );
+
+             $vArray = "array(
                 'kode_akun' => $cbo_akun,
-                'uraian' => '',
-                'volum' => '',
-                'satuan' => '',
-                'sbm' => '',
-                'subtotal' => '',
+                'uraian' => $txt_d_uraian,
+                'volum' => $txt_volume,
+                'satuan' => $txt_satuan,
+                'sbm' => $txt_harga,
+                'subtotal' => $txt_total,
                 'id_rab' => ''
             )";
                                

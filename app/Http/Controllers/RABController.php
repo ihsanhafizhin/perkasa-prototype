@@ -7,14 +7,13 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
-
+use Illuminate\Support\Facades\Cookie;
 class RABController extends Controller
 {
    
     public function rab_kegiatan(Request $request) {
         try{        
-            
-            $token = $request->token;   
+            $token = Cookie::get('access_token'); 
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
             $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
@@ -121,8 +120,10 @@ class RABController extends Controller
             $cbo_kro = $request->cbo_kro;
             $cbo_ro = $request->cbo_ro;
             $cbo_subkomponen = $request->cbo_subkomponen;
-            $cbo_akun = $request->cbo_akun;
+            //$cbo_akun = $request->cbo_akun;
             $cbo_komponen = $request->cbo_komponen;
+            
+
             
 
           
@@ -166,8 +167,50 @@ class RABController extends Controller
 
 
             // =============
+
+            $cbo_akun = $request->cbo_akun;
+            $txt_d_uraian = $request->txt_d_uraian;
+            $txt_volume = $request->txt_volume;
+            $txt_satuan = $request->txt_satuan;
+            $txt_harga = $request->txt_harga;
+            $txt_total = $request->txt_total;
+
+            $token = $request->token;                                            
+            $BASE_URL = env('API_URL');           
+            $api_url = "$BASE_URL/api/add/RabRincianAdd";   
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL =>  $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'kode_akun' => "521211",
+                'uraian' =>"Service Komputer",
+                'volum' => 0,
+                'satuan' => "unit",
+                'sbm' => 0,
+                'subtotal' => 0
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Cookie: perkasa2[JWT]='.$token
+            ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+            // ===========
             
-            app('App\Http\Controllers\RabrincianController')->addRabRincian($request);
+            // app('App\Http\Controllers\RabrincianController')->addRabRincian($request);
             
             return redirect()->back();
         }catch(Exception $err) {

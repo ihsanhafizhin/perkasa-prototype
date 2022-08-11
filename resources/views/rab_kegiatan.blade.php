@@ -1105,7 +1105,24 @@ foreach($arrays as $item) {
 
         </div>
         
+        <table border="0" style="color:white; text-align:center">
+            <tr>
+                <td>Detail Uraian</td>
+                <td>Volume</td>
+                <td>Satuan</td>
+                <td>Harga</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td><input id="txt_d_uraian" name="txt_d_uraian" type="text" style="width: 70%;"></td>
+                <td><input id="txt_volume" name="txt_volume" type="text" style="width: 70%;"></td>
+                <td><input id="txt_satuan" name="txt_satuan" type="text" style="width: 70%;"></td>
+                <td><input id="txt_harga" name="txt_harga" type="text" style="width: 70%;"></td>
+                <td><input id="txt_total" name="txt_total" type="text" style="width: 70%;"></td>
+            </tr>
+        </table>
 
+        <br>
         <div class="modal-body" style="margin-top:0%; margin-left:60%">
             
             <input type="reset" name="" id="" value="Cancel" style="color:red">
@@ -1155,7 +1172,29 @@ foreach($arrays as $item) {
         </div>
 
         <div class="modal-body" style="text-align:center">
-        Kode Akun : <select name="" id=""><option value="" ></option></select>
+        Kode Akun : 
+        
+        <!-- <select name="" id=""><option value="" ></option></select> -->
+
+        <select name="cbo_akun_rk_d" id="cbo_akun_rk_d" style="width: 70%;" >
+                <option value="">  </option>
+                @php
+
+                    $array = json_decode( $listakun, true );
+
+                    $arrays = $array['akun'];
+
+                    foreach($arrays as $item) {
+
+                        $kode = $item['kode'];
+                        $uraian = $item['uraian'];
+                        echo "<option value='$kode'> $uraian </option>";
+                    }
+                @endphp
+                
+            
+            </select>
+
         </div>
 
         <div class="modal-body">
@@ -1201,31 +1240,7 @@ test
         $('.dataTables_length').addClass('bs-select');
         });
 
-        // $( "#btn_i_delete_ya" ).click(function() {
-        //     alert( "Handler for .click() called." ); //do your code here
-
-            
-
-        //     var vr_id_rab = 14;
-            
-
-
-        //         $.ajax({
-        //             headers: {
-        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //             },
-        //             url : "{{ url('rab_delete') }}",
-                    
-        //             type : 'POST',
-        //             dataType : 'json',
-        //             success : function(result){
-
-        //                 console.log("===== " + result + " =====");
-
-        //             }
-        //         });
-
-        // });
+        
         
     </script>
 @endpush
