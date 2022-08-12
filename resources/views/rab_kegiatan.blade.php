@@ -225,16 +225,24 @@
                             </td>
                            
                             <td>                                                        
-                                    <button class='btn btn-sm btn-warning'>EDIt</button>
+                                    <button class='btn btn-sm btn-warning'>EDIT</button>
                                     
 
                                     <button class='btn btn-sm btn-primary' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_copy'>
                                     COPY
                                     </button>
 
-                                     <button class='btn btn-sm btn-danger' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_delete'>
+                                     <!-- <button class='btn btn-sm btn-danger' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_delete'>
+                                    HAPUS
+                                    </button> -->
+
+                                    <button class='btn btn-sm btn-danger delete_rab_rincian' type='button' data-rab_rincian_id=".$item['rab_rincian_id'].">
                                     HAPUS
                                     </button>
+
+                                    <!-- <a class='delete_rab_rincian' data-rab_rincian_id=".$item['rab_rincian_id']."  href='javascript:void(0)'>
+                                    test
+                                    </a> -->
                                                                   
                             </td>
                             <td>
@@ -931,14 +939,48 @@
 @push('js-table')
     <script>
         $(document).ready(function () {
-        $('#dtHorizontalVerticalExample').DataTable({
-            "scrollX": true,
-            "scrollY": 200,
-        });
-        $('.dataTables_length').addClass('bs-select');
+
+            $('#dtHorizontalVerticalExample').DataTable({
+                "scrollX": true,
+                "scrollY": 200,
+            });
+            $('.dataTables_length').addClass('bs-select');
+
         });
 
-        
+
+
+        $(document).ready(function(){
+            
+            $('.delete_rab_rincian').click(function(e){
+            e.preventDefault();
+            var v_rab_rincian_id = $(this).attr('data-rab_rincian_id');
+
+            var parent = $(this).parent("td").parent("tr");
+            bootbox.dialog({
+            message: "Apakah anda akan menghapus data ini ?",
+            title: "<i class='glyphicon glyphicon-trash'></i> Delete !",
+            buttons: {
+                success: {
+                label: "No",
+                className: "btn-success",
+                callback: function() {
+                $('.bootbox').modal('hide');
+                }
+                },
+                danger: {
+                label: "Delete!",
+                className: "btn-danger",
+                callback: function() {                     
+                    v_url = "/rab_rincian_delete?v_id=" + v_rab_rincian_id;
+                    url = v_url;
+                    window.location.href = url;                
+                }
+                }
+                }
+            });
+            });
+});
         
     </script>
 @endpush

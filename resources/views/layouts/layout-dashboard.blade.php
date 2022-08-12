@@ -338,6 +338,8 @@
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+
     {{-- Chart js --}}
     @stack('chart-js')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

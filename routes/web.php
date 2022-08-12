@@ -13,6 +13,7 @@ use App\Http\Controllers\MasterSubKomponenController;
 use App\Http\Controllers\RabNotePenelaahController;
 use App\Http\Controllers\RabNotePenyetujuController;
 use App\Http\Controllers\SatkerController;
+use App\Http\Controllers\RabrincianController;
 
 
 
@@ -28,6 +29,9 @@ Route::prefix('/login')->name('login.')->group(function() {
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
+    
+    Route::get('/rab_rincian_delete', [RabrincianController::class, 'rab_rincian_delete'])->name('rab_rincian_delete');
+
     Route::get('/getsatker', [SatkerController::class, 'getSatker'])->name('getsatker');
     Route::post('/addrab', [RABController::class, 'addRab'])->name('addrab');
     Route::post('/addrabnotepenyetuju', [RabNotePenyetujuController::class, 'addRabNotePenyetuju'])->name('addrabnotepenyetuju');
