@@ -125,22 +125,22 @@
                         </a>
                         <div id="collapseMag" class="collapse" aria-labelledby="headingUtilities">
                             <div class="py-2 collapse-inner rounded menu-sidebar-dropdown">
-                                <a class="nav-link" href="{{ route('program') }}">
+                                <a class="nav-link" href="{{ route('indexProgram') }}">
                                     <span>Program</span>
                                 </a>
-                                <a class="nav-link" href="{{ route('kegiatan') }}">
+                                <a class="nav-link" href="{{ route('indexKegiatan') }}">
                                     <span>Kegiatan</span>
                                 </a>
-                                <a class="nav-link" href="{{ route('kro') }}">
+                                <a class="nav-link" href="{{ route('indexKro') }}">
                                     <span>KRO</span>
                                 </a>
-                                <a class="nav-link" href="{{ route('ro') }}">
+                                <a class="nav-link" href="{{ route('indexRo') }}">
                                     <span>RO</span>
                                 </a>
-                                <a class="nav-link" href="{{ route('komponen') }}">
+                                <a class="nav-link" href="{{ route('indexKomponen') }}">
                                     <span>komponen</span>
                                 </a>
-                                <a class="nav-link" href="{{ route('sub-komponen') }}">
+                                <a class="nav-link" href="{{ route('indexSubKomponen') }}">
                                     <span>Sub Komponen</span>
                                 </a>
                                 <a class="nav-link" href="{{ route('akun-coa') }}">

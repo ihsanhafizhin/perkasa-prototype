@@ -17,25 +17,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td>
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td>  
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button></td>
-              </tr>
+             @php
+
+                    $array = json_decode( $listprogram, true );
+
+                    $arrays = $array['program'];
+
+                    foreach($arrays as $item) {
+
+                        $program_id = $item['id'];
+                        $nama_program = $item['nama_program'];
+                        $kode_program = $item['kode_program'];
+                        echo "
+                        <tr>
+                            <th>$kode_program</th>
+                            <td>$nama_program</td>
+                            <td>$program_id</td>
+                            <td>
+                                <button class='btn btn-primary'>View</button>
+                                <button class='btn btn-warning'>Edit</button>
+                                <button class='btn btn-danger'>Delete</button>
+                            </td>
+                        </tr>
+                        ";
+                    }
+            @endphp    
             </tbody>
           </table>
           <!-- Button trigger modal -->
@@ -46,29 +52,32 @@
             <!-- Modal -->
             <div class="modal fade" id="formAddUnitKerja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                <form action="">
+                <form action="{{ route('addProgram') }}" method="POST">
+                    @csrf
                     <div class="modal-content">
                         <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tambahkan Program</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <div class="form-groups">
-                            <label for="">Kode</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-groups">
-                            <label for="">Nama Program</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-groups">
-                            <label for="">Id</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Tambahkan</button>
+                            <form action="{{ route('addProgram') }}" method="POST">
+                                <div class="form-groups">
+                                    <label for="#kodeProgram">Kode</label>
+                                    <input type="text" name="kode_program" id="kodeProgram" class="form-control">
+                                </div>
+                                <div class="form-groups">
+                                    <label for="">Nama Program</label>
+                                    <input type="text" name="nama_program" id="namaProgram" class="form-control">
+                                </div>
+                                <div class="form-groups">
+                                    <label for="">Id</label>
+                                    <input type="text" class="form-control" name="id_program" id="idProgram">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                            </form>
                         </div>
                     </div>
                 </form>
