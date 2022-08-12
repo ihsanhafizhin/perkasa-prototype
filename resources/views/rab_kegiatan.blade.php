@@ -90,69 +90,6 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="btn_i_delete" tabindex="-1" aria-labelledby="btn_i_delete" aria-hidden="true">
-                <div class="modal-dialog">
-                <form action="{{ route('rab_delete') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="btn_i_delete">Informasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Primary Key">
-                        </div>
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
-                        </div>
-                        <div class="form-groups">
-                           <h5 class="modal-title" id="btn_i_delete">Apakah anda mau menghapus data ini ?</h5>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      
-
-                        <button id="btn_i_delete_ya" class="btn btn-primary" type="submit">Ya</button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-
-            <div class="modal fade" id="btn_i_copy" tabindex="-1" aria-labelledby="btn_i_copy" aria-hidden="true">
-                <div class="modal-dialog">
-                <form action="" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{$token}}"/>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title">Informasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Primary Key">
-                        </div>
-                        <div class="form-groups">
-                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
-                        </div>
-                        <div class="form-groups">
-                           <h5 class="modal-title">Apakah anda mau copy data ini ?</h5>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      
-
-                        <button id="btn_i_copy_ya" class="btn btn-primary" type="submit">Ya</button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
 
 
         </b>
@@ -224,25 +161,19 @@
                                 -
                             </td>
                            
-                            <td>                                                        
-                                    <button class='btn btn-sm btn-warning'>EDIT</button>
-                                    
-
-                                    <button class='btn btn-sm btn-primary' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_copy'>
+                            <td>                   
+                                                      
+                                    <button class='btn btn-sm btn-primary edit_rab_rincian' type='button' data-rab_rincian_id=".$item['rab_rincian_id'].">
+                                    EDIT
+                                    </button>
+                                                                    
+                                    <button class='btn btn-sm btn-primary copy_rab_rincian' type='button' data-rab_rincian_id=".$item['rab_rincian_id'].">
                                     COPY
                                     </button>
-
-                                     <!-- <button class='btn btn-sm btn-danger' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_delete'>
-                                    HAPUS
-                                    </button> -->
 
                                     <button class='btn btn-sm btn-danger delete_rab_rincian' type='button' data-rab_rincian_id=".$item['rab_rincian_id'].">
                                     HAPUS
                                     </button>
-
-                                    <!-- <a class='delete_rab_rincian' data-rab_rincian_id=".$item['rab_rincian_id']."  href='javascript:void(0)'>
-                                    test
-                                    </a> -->
                                                                   
                             </td>
                             <td>
@@ -952,6 +883,47 @@
 
         $(document).ready(function(){
             
+            $('.edit_rab_rincian').click(function(e){
+
+                e.preventDefault();
+                var v_rab_rincian_id = $(this).attr('data-rab_rincian_id');
+                var parent = $(this).parent("td").parent("tr");
+
+                $('#detail').modal('show');
+                
+            });
+
+
+            $('.copy_rab_rincian').click(function(e){
+            e.preventDefault();
+            var v_rab_rincian_id = $(this).attr('data-rab_rincian_id');
+
+            var parent = $(this).parent("td").parent("tr");
+            bootbox.dialog({
+            message: "Apakah anda akan copy data ini ?",
+            title: "<i class='glyphicon glyphicon-trash'></i> Informasi.",
+            buttons: {
+                success: {
+                label: "Tidak",
+                className: "btn-success",
+                callback: function() {
+                $('.bootbox').modal('hide');
+                }
+                },
+                danger: {
+                label: "Ya",
+                className: "btn-danger",
+                callback: function() { 
+                                       
+ 
+
+                }
+                }
+                }
+            });
+            });
+
+
             $('.delete_rab_rincian').click(function(e){
             e.preventDefault();
             var v_rab_rincian_id = $(this).attr('data-rab_rincian_id');
@@ -959,17 +931,17 @@
             var parent = $(this).parent("td").parent("tr");
             bootbox.dialog({
             message: "Apakah anda akan menghapus data ini ?",
-            title: "<i class='glyphicon glyphicon-trash'></i> Delete !",
+            title: "<i class='glyphicon glyphicon-trash'></i> Informasi.",
             buttons: {
                 success: {
-                label: "No",
+                label: "Tidak",
                 className: "btn-success",
                 callback: function() {
                 $('.bootbox').modal('hide');
                 }
                 },
                 danger: {
-                label: "Delete!",
+                label: "Ya",
                 className: "btn-danger",
                 callback: function() {                     
                     v_url = "/rab_rincian_delete?v_id=" + v_rab_rincian_id;
@@ -984,5 +956,6 @@
         
     </script>
 @endpush
-{{-- End of Bagian Modal  --}}
+
+
 @endsection
