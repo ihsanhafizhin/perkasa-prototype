@@ -122,6 +122,38 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="btn_i_copy" tabindex="-1" aria-labelledby="btn_i_copy" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="" method="POST">
+                @csrf
+                <input type="hidden" name="token" value="{{$token}}"/>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Informasi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Primary Key">
+                        </div>
+                        <div class="form-groups">
+                            <input type="text" class="form-control" hidden placeholder="Foreign Key">
+                        </div>
+                        <div class="form-groups">
+                           <h5 class="modal-title">Apakah anda mau copy data ini ?</h5>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                      
+
+                        <button id="btn_i_copy_ya" class="btn btn-primary" type="submit">Ya</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+
 
         </b>
     </div>
@@ -194,7 +226,11 @@
                            
                             <td>                                                        
                                     <button class='btn btn-sm btn-warning'>EDIt</button>
-                                    <button class='btn btn-sm btn-primary'>COPY</button>
+                                    
+
+                                    <button class='btn btn-sm btn-primary' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_copy'>
+                                    COPY
+                                    </button>
 
                                      <button class='btn btn-sm btn-danger' type='button'  data-bs-toggle='modal' data-bs-target='#btn_i_delete'>
                                     HAPUS
