@@ -23,7 +23,7 @@ class RABController extends Controller
             $listakuns = app('App\Http\Controllers\AkunController')->getAkun($token);
             $listkomponens = app('App\Http\Controllers\KomponenController')->getKomponen($token);
             $listrabrincians = app('App\Http\Controllers\RabrincianController')->getRabrincian($token);
-                                
+                          
             return view('rab_kegiatan', [                
                 'listsatker' => $listsatkers,
                 'token' => $token,
@@ -99,16 +99,10 @@ class RABController extends Controller
             $cbo_komponen = $request->cbo_komponen;
             
 
-            
-
-          
-
             $token = $request->token;                                            
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/RabAdd";   
-            
-            //dd($token);
-
+                        
             $curl = curl_init();
 
             curl_setopt_array($curl, array(

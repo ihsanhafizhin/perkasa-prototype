@@ -2,6 +2,24 @@
 
 @section('content')
 
+<!-- <table id="tbl_Rab"
+  data-toolbar=".toolbar"
+  data-height="400"
+  data-virtual-scroll="true"
+  data-show-columns="true">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table> -->
+
+
+<!-- <table id="tbl_Rab"></table> -->
+<table id="tbl_test_Rab"></table>
+
 <div class="container-fluid container-content">
 
     <div class="row row-modal-button">
@@ -862,24 +880,16 @@
         </center>
     </form>	
 
-
+   
         </div>
     </div>
 </div>
 
+
+
 @push('js-table')
     <script>
-        $(document).ready(function () {
-
-            $('#dtHorizontalVerticalExample').DataTable({
-                "scrollX": true,
-                "scrollY": 200,
-            });
-            $('.dataTables_length').addClass('bs-select');
-
-        });
-
-
+      
 
         $(document).ready(function(){
             
@@ -955,6 +965,282 @@
 });
         
     </script>
+
+@php
+
+$arr_rab_rincians = json_decode( $listrabrincian, true );
+
+$arr_rab_rincianss = $arr_rab_rincians['rab_rincian'];
+
+
+
+
+@endphp
+
+
+<!-- <script>
+  var $arb_array = <?php  echo json_encode($arr_rab_rincianss) ?>;
+  $arb_array_length = $arb_array.length;
+  
+  console.log($arb_array_length);
+  
+  var $tbl_Rab = $('#tbl_Rab');
+  var total = 0;
+
+  function getData(number, isAppend) {
+    var data = [];
+    for (var i = 0; i < $arb_array_length; i++) {
+      $kode_akun =  $arb_array[i]['kode_akun'];
+      $uraian =  $arb_array[i]['uraian'];
+      $sbm =  $arb_array[i]['sbm'];
+      
+      data.push({
+        'id': $kode_akun,
+        'name': $uraian,
+        'price': $sbm
+      })
+    }
+
+    return data;
+    
+  }
+
+  $(function() {
+    
+    $tbl_Rab.bootstrapTable({data: getData(20)})
+
+    $('#load').click(function () {
+      $tbl_Rab.bootstrapTable('load', getData(10000))
+    })
+
+    $('#append').click(function () {
+      $tbl_Rab.bootstrapTable('append', getData(10000, true))
+    })
+  })
+</script> -->
+
+<!-- <script>
+  var $arb_array = <?php  echo json_encode($arr_rab_rincianss) ?>;
+  $arb_array_length = $arb_array.length;
+  
+  console.log($arb_array_length);
+  
+  var $tbl_Rab = $('#tbl_Rab');
+  var total = 0;
+
+  function getData(number, isAppend) {
+    var data = [];
+    for (var i = 0; i < $arb_array_length; i++) {
+      $kode_akun =  $arb_array[i]['kode_akun'];
+      $uraian =  $arb_array[i]['uraian'];
+      $sbm =  $arb_array[i]['sbm'];
+      
+      data.push({
+        'id': $kode_akun,
+        'name': $uraian,
+        'price': $sbm
+      })
+    }
+
+    return data;
+    
+  }
+
+  $(function() {
+    
+    $tbl_Rab.bootstrapTable({data: getData(20)})
+
+    $('#load').click(function () {
+      $tbl_Rab.bootstrapTable('load', getData(10000))
+    })
+
+    $('#append').click(function () {
+      $tbl_Rab.bootstrapTable('append', getData(10000, true))
+    })
+  })
+</script> -->
+
+<!-- <script>
+  var $table = $('#tbl_test_Rab')
+
+  function buildTable($el, cells, rows) {
+    var i; var j; var row
+    var columns = []
+    var data = []
+
+    for (i = 0; i < cells; i++) {
+      columns.push({
+        field: 'field' + i,
+        title: 'Cell' + i,
+        sortable: true
+      })
+    }
+    for (i = 0; i < rows; i++) {
+      row = {}
+      for (j = 0; j < cells; j++) {
+        row['field' + j] = 'Row-' + i + '-' + j
+      }
+      data.push(row)
+    }
+    $el.bootstrapTable({
+      columns: columns,
+      data: data,
+      detailView: cells > 1,
+      onExpandRow: function (index, row, $detail) {
+        /* eslint no-use-before-define: ["error", { "functions": false }]*/
+        expandTable($detail, cells - 1)
+      }
+    })
+  }
+
+  function expandTable($detail, cells) {
+    buildTable($detail.html('<table></table>').find('table'), cells, 1)
+  }
+
+  $(function() {
+    buildTable($table, 8, 1)
+  })
+</script> -->
+
+<!-- <script>
+  var $arb_array = <?php  echo json_encode($arr_rab_rincianss) ?>;
+  $arb_array_length = $arb_array.length;
+  var $table = $('#tbl_test_Rab')
+
+  function buildTable($el, cells, rows) {
+    var i; var j; var row
+    var columns = []
+    var data = []
+
+    for (i = 0; i < 9; i++) {
+      columns.push({
+        field: 'field' + i,
+        title: 'Cell' + i,
+        sortable: true
+      })
+    }
+    
+    for (i = 0; i < $arb_array_length; i++) {
+      row = {};
+
+      $kode_akun =  $arb_array[i]['kode_akun'];
+      $uraian =  $arb_array[i]['uraian'];
+      $sbm =  $arb_array[i]['sbm'];
+
+      for (j = 0; j < cells; j++) {
+        row['field' + 0] = $kode_akun
+        row['field' + 1] = $uraian
+        row['field' + 2] = $sbm
+        row['field' + 3] = $kode_akun
+        row['field' + 4] = $uraian
+        row['field' + 5] = $sbm
+        row['field' + 6] = $kode_akun
+        row['field' + 7] = $uraian
+        row['field' + 8] = $sbm
+      }
+      data.push(row)
+    }
+    $el.bootstrapTable({
+      columns: columns,
+      data: data,
+      detailView: cells > 1,
+      onExpandRow: function (index, row, $detail) {
+        alert("test");
+        /* eslint no-use-before-define: ["error", { "functions": false }]*/
+        expandTable($detail, cells - 1)
+      }
+    })
+  }
+
+  function expandTable($detail, cells) {
+    buildTable($detail.html('<table></table>').find('table'), cells, 1)
+  }
+
+  $(function() {
+    buildTable($table, 8, 1)
+  })
+</script> -->
+
+<script>
+  var $arb_array = <?php  echo json_encode($arr_rab_rincianss) ?>;
+  $arb_array_length = $arb_array.length;
+  var $table = $('#tbl_test_Rab')
+
+  function buildTable($el, cells, rows) {
+    var i; var j; var row
+    var columns = []
+    var data = []
+    var $arb_column = [
+    {0: 'Kode'},
+    {1: 'Uraian'}, 
+    {2: 'Volume'}, 
+    {3: 'Satuan'}, 
+    {4: 'Harga'},
+    {5: 'Jumlah'},
+    {6: 'Ket'},
+    {7: 'Aksi'},
+    {8: 'Catatan'}
+];
+
+$arb_column_length = $arb_column.length;
+
+for (i = 0; i < $arb_column_length; i++) {    
+    columns.push({
+        field: 'field' + i,
+        title: $arb_column[i][i],
+        sortable: true
+      })
+
+}
+    
+    for (i = 0; i < $arb_array_length; i++) {
+      row = {};
+
+      $rab_rincian_id =  $arb_array[i]['rab_rincian_id'];
+    //   $kode =  $arb_array[i]['kode'];
+    //   $id =  $arb_array[i]['id'];
+      $kode_akun =  $arb_array[i]['kode_akun'];
+      $detail_id =  $arb_array[i]['detail_id'];
+      $uraian =  $arb_array[i]['uraian'];
+      $volum =  $arb_array[i]['volum'];      
+      $satuan =  $arb_array[i]['satuan'];
+      $sbm =  $arb_array[i]['sbm'];
+      $subtotal =  $arb_array[i]['subtotal'];
+      console.log($rab_rincian_id);
+      for (j = 0; j < cells; j++) {
+        row['field' + 0] = $kode_akun
+        row['field' + 1] = $uraian
+        row['field' + 2] = $sbm
+        row['field' + 3] = $kode_akun
+        row['field' + 4] = $uraian
+        row['field' + 5] = $sbm
+        row['field' + 6] = "-"
+        row['field' + 7] = " <button class='btn btn-sm btn-primary edit_rab_rincian' type='button' data-rab_rincian_id='' > EDIT</button>&nbsp<button class='btn btn-sm btn-primary copy_rab_rincian' type='button' data-rab_rincian_id=''>COPY</button><a href='/rab_rincian_delete?v_id="+ $rab_rincian_id +"'  class='btn btn-sm btn-danger'>HAPUS</a>"
+        row['field' + 8] = "-"
+      }
+      data.push(row)
+    }
+    $el.bootstrapTable({
+      columns: columns,
+      data: data,
+      detailView: cells > 1,
+      onExpandRow: function (index, row, $detail) {
+        alert("test");
+        /* eslint no-use-before-define: ["error", { "functions": false }]*/
+        expandTable($detail, cells - 1)
+      }
+    })
+  }
+
+  function expandTable($detail, cells) {
+    buildTable($detail.html('<table></table>').find('table'), cells, 1)
+  }
+
+  $(function() {
+    buildTable($table, 8, 1)
+  })
+</script>
+
 @endpush
 
 

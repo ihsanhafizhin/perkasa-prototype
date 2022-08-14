@@ -25,6 +25,7 @@
     <link href="{{ asset('assets/css/layout-dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/dashboard-style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -339,7 +340,7 @@
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
-
+    <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
     {{-- Chart js --}}
     @stack('chart-js')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
