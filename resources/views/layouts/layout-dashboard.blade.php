@@ -36,10 +36,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex justify-content-start align-items-start">
-                <div>
-                    <img src="{{ asset('assets/img/logo_perkasa-removebg-preview.png') }}" alt="" width="100%" height="auto">
-                </div>
+            <a class="sidebar-brand d-flex justify-content-center align-items-center">
+                    <img src="{{ asset('assets/img/logo_perkasa_side.png') }}" alt="" width="100%" height="auto">
+                    
                
                  <!-- Sidebar Toggler (Sidebar) -->
                 {{-- <div class="text-center d-none d-md-inline">
