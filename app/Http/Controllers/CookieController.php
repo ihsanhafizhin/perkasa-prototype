@@ -15,33 +15,37 @@ class CookieController extends Controller
    
     
     public function getCookie() {
-        try{    
-                                                    
-            $response = Cookie::get('access_token'); 
-            // $response = "";
+        try{                                                        
+            $response = Cookie::get('cookiesp_3'); 
+            
             if ($response) {
                 return $response;
             } else {
-                // dd("test");
-                // $token = $this->autoLoginApi();
-                // dd($token);
-                app('App\Http\Controllers\AuthController')->logout();
-            }
-            
+                return "";
+            }            
         }catch(Exception $err) {
-                //dd("test2");   
-                // $token = $this->autoLoginApi();
-                // dd($token);       
-                app('App\Http\Controllers\AuthController')->logout();
+                return "";
         }
     }  
     
-    public function autoLoginApi() {
+    public function checkToken($value) {
+        if($value) {
+        } else {
+            $this->autoLoginApi();
+        }        
+    }
 
-        //dd("test3");
+    public function autoLoginApi() {
+       
+        $password="password";
+        $username_string = Cookie::get('cookiesp_1'); 
+        $password_string = Cookie::get('cookiesp_2');
+
+        $decrypted_username=openssl_decrypt($username_string,"AES-128-ECB",$password);
+        $decrypted_password=openssl_decrypt($password_string,"AES-128-ECB",$password);
+
         $BASE_URL = env('API_URL');           
         $api_url = $BASE_URL."/api/login";  
-        //dd($api_url);
         $curl = curl_init();          
         curl_setopt_array($curl, array(
         CURLOPT_URL => $api_url,
@@ -53,8 +57,8 @@ class CookieController extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',        
         CURLOPT_POSTFIELDS => array(
-            'username' => 'admin',
-            'password' => 'admin'    
+            'username' => $decrypted_username,
+            'password' => $decrypted_password    
         ),
         CURLOPT_HTTPHEADER => array(
             'Cookie: perkasa2[JWT]=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjA1NDQzNTEsImp0aSI6IlRHWlE2ZEEyQ2luV3RmZ1pYbmU2NExcLzNsSDh5cXkzRFhrOUU3bFNYbkJNPSIsImlzcyI6InBlcmthc2EubWRhem9uZS5jb20iLCJuYmYiOjE2NjA1NDQzNTEsImV4cCI6MTY2MDU0NDk1MSwic2VjdXJpdHkiOnsidXNlcm5hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlcmlkIjoiLTEiLCJwYXJlbnR1c2VyaWQiOm51bGwsInVzZXJsZXZlbGlkIjotMX19.7TX-OO7owkPV5tBEaqMYqapyP3rArMs-_f_eSAv-c83JVC3Aw_uPjggch6isMYasw4T1zEd5Z4AhbkeOSj_cvQ; perkasa2[LastUrl]=%2FRoList'
@@ -62,18 +66,11 @@ class CookieController extends Controller
         ));
 
      $response = curl_exec($curl);
-    
-     $tokens = $response->JWT;  
-     dd($tokens); 
+     $tokens = json_decode( $response, true );
+     $token = $tokens['JWT'] ?? '';
      curl_close($curl);  
-     //dd($response);  
-     
-                          
-            
-            
-    Cookie::queue('access_token', $token);
-    return redirect()->route('dashboard');
-     
+       
+     Cookie::queue('cookiesp_3', $token);     
     }
    
 }

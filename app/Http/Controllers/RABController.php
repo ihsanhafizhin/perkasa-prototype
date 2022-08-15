@@ -14,12 +14,14 @@ class RABController extends Controller
 {
    
     public function rab_kegiatan(Request $request) {
-        try{                     
+        try{        
+                        
             $token = app('App\Http\Controllers\CookieController')->getCookie();  
+            app('App\Http\Controllers\CookieController')->checkToken(""); 
             
             
-
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
+            
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
             $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
             $listkros = app('App\Http\Controllers\KroController')->getKro($token); 

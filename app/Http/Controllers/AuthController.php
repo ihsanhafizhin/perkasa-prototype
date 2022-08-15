@@ -41,8 +41,21 @@ class AuthController extends Controller
 
 
             
-            Cookie::queue('access_token', $token);
+            $username_encrypt=$request->username;
+            $password="password";
+            $username_string=openssl_encrypt($username_encrypt,"AES-128-ECB",$password);
             
+    
+            $password_encrypt=$request->password;
+            $password="password";
+            $password_string=openssl_encrypt($password_encrypt,"AES-128-ECB",$password);
+
+
+            
+            
+            Cookie::queue('cookiesp_1', $username_string);
+            Cookie::queue('cookiesp_2', $password_string);
+            Cookie::queue('cookiesp_3', $token);
             
             return redirect()->route('dashboard');
          
@@ -54,8 +67,9 @@ class AuthController extends Controller
 
 
     public function logout() {
-        
-        Cookie::queue(Cookie::forget('access_token'));
+        Cookie::queue(Cookie::forget('cookiesp_1'));
+        Cookie::queue(Cookie::forget('cookiesp_2'));
+        Cookie::queue(Cookie::forget('cookiesp_3'));
         Auth::logout();
         return redirect()->route('login.view');
     }
