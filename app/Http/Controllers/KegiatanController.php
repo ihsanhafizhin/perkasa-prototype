@@ -18,16 +18,9 @@ class KegiatanController extends Controller
             $api_url = "/api/list/KegiatanList";              
             $response = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
             
-            if ($response) {
-                return $response;
-            } else {
-                Auth::logout();
-                return redirect()->route('login.view');
-            }
-            
+            return $response;
         }catch(Exception $err) {            
-            Auth::logout();
-            return redirect()->route('login.view');
+            return "";
         }
     }
 

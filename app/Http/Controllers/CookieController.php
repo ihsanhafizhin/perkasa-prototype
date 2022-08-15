@@ -15,10 +15,18 @@ class CookieController extends Controller
     
     public function getCookie() {
         try{                                            
-            $response = Cookie::get('access_token');                     
-            return $response;
+            $response = Cookie::get('access_token'); 
+            
+            if ($response) {
+                return $response;
+            } else {
+                Auth::logout();
+                return redirect()->route('login.view');
+            }
+            
         }catch(Exception $err) {            
-            return "";
+                Auth::logout();
+                return redirect()->route('login.view');
         }
     }   
    
