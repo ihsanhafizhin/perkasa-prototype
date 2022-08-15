@@ -15,11 +15,11 @@ class RABController extends Controller
    
     public function rab_kegiatan(Request $request) {
         try{        
-                        
+            app('App\Http\Controllers\CookieController')->checkToken("");             
             $token = app('App\Http\Controllers\CookieController')->getCookie();  
             app('App\Http\Controllers\CookieController')->checkToken(""); 
             
-            
+
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
             
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 

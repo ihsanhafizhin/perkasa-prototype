@@ -844,7 +844,7 @@ $('#cbo_akun_rk_d').change(function(){
 });
 
 function get_rab_rincian(value) {
-
+//alert(value);
 $.ajax({
     type: 'GET',
     url: '/rab_rincian_get',
