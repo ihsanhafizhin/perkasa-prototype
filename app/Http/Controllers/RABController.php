@@ -39,8 +39,7 @@ class RABController extends Controller
 
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
 
@@ -80,8 +79,7 @@ class RABController extends Controller
             return redirect()->back();
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
 
@@ -99,14 +97,15 @@ class RABController extends Controller
             $cbo_komponen = $request->cbo_komponen;
             
 
-            $token = $request->token;                                            
+            $token = app('App\Http\Controllers\CookieController')->getCookie();   
+                        
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/RabAdd";   
-                        
+                     
             $curl = curl_init();
+           
 
-            curl_setopt_array($curl, array(
-                
+            curl_setopt_array($curl, array(              
             CURLOPT_URL => $api_url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
@@ -138,8 +137,7 @@ class RABController extends Controller
             return redirect()->back();
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
    

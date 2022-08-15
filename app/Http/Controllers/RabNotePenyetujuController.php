@@ -44,8 +44,7 @@ class RabNotePenyetujuController extends Controller
             return redirect()->back();
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
    

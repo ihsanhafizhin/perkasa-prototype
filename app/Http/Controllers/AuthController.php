@@ -48,14 +48,16 @@ class AuthController extends Controller
          
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            $this->logout();
         }
     }
 
 
     public function logout() {
+        
+        Cookie::queue(Cookie::forget('access_token'));
         Auth::logout();
         return redirect()->route('login.view');
     }
+    
 }

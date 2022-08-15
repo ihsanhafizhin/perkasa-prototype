@@ -26,7 +26,7 @@ class RabrincianController extends Controller
 
     public function addRabRincian(Request $request) {
         try{        
-           
+           //dd("test123");
             $cbo_akun = $request->cbo_akun;
             $txt_d_uraian = $request->txt_d_uraian;
             $txt_volume = $request->txt_volume;
@@ -36,7 +36,7 @@ class RabrincianController extends Controller
 
             $token = app('App\Http\Controllers\CookieController')->getCookie();                                            
             $BASE_URL = env('API_URL');           
-            $api_url = "$BASE_URL/api/add/RabRincianAdd";   
+            $api_url = "$BASE_URL./api/add/RabRincianAdd";   
 
 
             $curl = curl_init();
@@ -51,12 +51,14 @@ class RabrincianController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'kode_akun' => "521211",
-                'uraian' =>"Service Komputer",
-                'volum' => 0,
-                'satuan' => "unit",
-                'sbm' => 0,
-                'subtotal' => 0
+                'kode_akun' => $cbo_akun,
+                'uraian' => $txt_d_uraian,
+                'volum' => $txt_volume,
+                'satuan' => $txt_satuan,
+                'sbm' => $txt_harga,
+                'subtotal' => $txt_total,
+                'showmaster' => 'rab',
+                'fk_id_rab' => 14
             ),
             CURLOPT_HTTPHEADER => array(
                 'Cookie: perkasa2[JWT]='.$token
@@ -107,8 +109,7 @@ class RabrincianController extends Controller
             return redirect()->back();
         }catch(Exception $err) {
             
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
    

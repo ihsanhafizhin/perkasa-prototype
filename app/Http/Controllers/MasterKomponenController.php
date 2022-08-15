@@ -74,8 +74,7 @@ class MasterKomponenController extends Controller
             return redirect()->back();
         }catch(Exception $err) {
             dd($err->getMessage());
-            Auth::logout();
-            return redirect()->route('login.view');
+            
         }
     }
 }
