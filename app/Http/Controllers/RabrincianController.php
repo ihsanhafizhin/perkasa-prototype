@@ -24,6 +24,30 @@ class RabrincianController extends Controller
         }
     }
 
+    public function getRabrincians(Request $request) {
+        try{      
+            
+            $token = app('App\Http\Controllers\CookieController')->getCookie();                        
+            $api_url = "/api/list/RabRincianView";              
+            $listrabrincian = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
+
+            $arr_rab_rincians = json_decode( $listrabrincian, true );
+
+            $arr_rab_rincianss = $arr_rab_rincians['rab_rincian'] ?? '';
+            
+            
+            if($arr_rab_rincianss){
+                return json_encode($arr_rab_rincianss);
+               // return response()->json(['msg'=>'successfully get data', 'success'=>true, 'data'=>$response]);
+            } else {
+                return response()->json(['msg'=>'failed to get data', 'success'=>false, 'data'=>'']);
+            }
+        }catch(Exception $err) {            
+            return response()->json(['msg'=>'failed to get data', 'success'=>false, 'data'=>'']);
+        }
+    }
+
+
     public function addRabRincian(Request $request) {
         try{        
            //dd("test123");

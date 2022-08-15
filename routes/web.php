@@ -30,6 +30,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function() {
     
+    
+    Route::get('/rab_rincian_get', [RabrincianController::class, 'getRabrincians'])->name('rab_rincian_get');
     Route::get('/rab_rincian_delete', [RabrincianController::class, 'rab_rincian_delete'])->name('rab_rincian_delete');
 
     Route::get('/getsatker', [SatkerController::class, 'getSatker'])->name('getsatker');

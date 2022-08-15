@@ -807,11 +807,11 @@
                 <td>Total</td>
             </tr>
             <tr>
-                <td><input id="txt_d_uraian" name="txt_d_uraian" type="text" style="width: 70%;"></td>
-                <td><input id="txt_volume" name="txt_volume" type="text" style="width: 70%;"></td>
-                <td><input id="txt_satuan" name="txt_satuan" type="text" style="width: 70%;"></td>
-                <td><input id="txt_harga" name="txt_harga" type="text" style="width: 70%;"></td>
-                <td><input id="txt_total" name="txt_total" type="text" style="width: 70%;"></td>
+                <td><input id="txt_d_uraian_d" name="txt_d_uraian_d" type="text" style="width: 70%;"></td>
+                <td><input id="txt_volume_d" name="txt_volume_d" type="text" style="width: 70%;"></td>
+                <td><input id="txt_satuan_d" name="txt_satuan_d" type="text" style="width: 70%;"></td>
+                <td><input id="txt_harga_d" name="txt_harga_d" type="text" style="width: 70%;"></td>
+                <td><input id="txt_total_d" name="txt_total_d" type="text" style="width: 70%;"></td>
             </tr>
         </table>
 
@@ -833,6 +833,86 @@
 
 
 @push('js-table')
+<script>
+
+$('#cbo_akun_rk_d').change(function(){ 
+	var value = $(this).val();
+    get_rab_rincian(value);
+
+    
+
+});
+
+function get_rab_rincian(value) {
+
+$.ajax({
+    type: 'GET',
+    url: '/rab_rincian_get',
+    success: function(data){
+        var $arr_rab_rincians = JSON.parse(data);
+        $arb_array = $arr_rab_rincians;
+        $arb_array_length = $arb_array.length;
+        for (i = 0; i < $arb_array_length; i++) {
+
+            $rab_rincian_id =  $arb_array[i]['rab_rincian_id'];
+            //   $kode =  $arb_array[i]['kode'];
+            //   $id =  $arb_array[i]['id'];
+            $kode_akun =  $arb_array[i]['kode_akun'];
+            $detail_id =  $arb_array[i]['detail_id'];
+            $uraian =  $arb_array[i]['uraian'];
+            $volum =  $arb_array[i]['volum'];      
+            $satuan =  $arb_array[i]['satuan'];
+            $sbm =  $arb_array[i]['sbm'];
+            $subtotal =  $arb_array[i]['subtotal'];
+            
+            $("#txt_d_uraian_d").val($uraian);
+            $("#txt_volume_d").val($volum);
+            $("#txt_satuan_d").val($satuan);
+            $("#txt_harga_d").val($sbm);
+            $("#txt_total_d").val($subtotal);            
+        }
+
+    },
+    error: function(xhr){
+        console.log(xhr.responseText);
+    }
+});
+
+}
+
+function get_rab_rincian_tbl(value) {
+
+    $.ajax({
+        type: 'GET',
+        url: '/rab_rincian_get',
+        success: function(data){
+            var $arr_rab_rincians = JSON.parse(data);
+            $arb_array = $arr_rab_rincians;
+            $arb_array_length = $arb_array.length;
+            for (i = 0; i < $arb_array_length; i++) {
+
+                $rab_rincian_id =  $arb_array[i]['rab_rincian_id'];
+                //   $kode =  $arb_array[i]['kode'];
+                //   $id =  $arb_array[i]['id'];
+                $kode_akun =  $arb_array[i]['kode_akun'];
+                $detail_id =  $arb_array[i]['detail_id'];
+                $uraian =  $arb_array[i]['uraian'];
+                $volum =  $arb_array[i]['volum'];      
+                $satuan =  $arb_array[i]['satuan'];
+                $sbm =  $arb_array[i]['sbm'];
+                $subtotal =  $arb_array[i]['subtotal'];                
+            }
+
+        },
+        error: function(xhr){
+            console.log(xhr.responseText);
+        }
+    });
+
+}
+
+</script>
+
     <script>
       
 
@@ -967,7 +1047,7 @@ for (i = 0; i < $arb_column_length; i++) {
       $satuan =  $arb_array[i]['satuan'];
       $sbm =  $arb_array[i]['sbm'];
       $subtotal =  $arb_array[i]['subtotal'];
-      console.log($rab_rincian_id);
+      //console.log($rab_rincian_id);
       for (j = 0; j < cells; j++) {
         row['field' + 0] = $kode_akun
         row['field' + 1] = $uraian

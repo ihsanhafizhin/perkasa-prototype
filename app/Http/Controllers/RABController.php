@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 use Illuminate\Support\Facades\Cookie;
 
-use Tymon\JWTAuth\Facades\JWTAuth;
+
 class RABController extends Controller
 {
    
