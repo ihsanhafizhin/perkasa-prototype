@@ -322,14 +322,18 @@
 
                     $array = json_decode( $listsatker, true );
 
-                    $arrays = $array['satker'];
+                    $arrays = $array['satker'] ?? '';
+                    
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
-                    foreach($arrays as $item) {
-
-                        $satker_id = $item['satker_id'];
-                        $nama_satker = $item['nama_satker'];
-                        echo "<option value='$satker_id'> $nama_satker </option>";
+                            $satker_id = $item['satker_id'];
+                            $nama_satker = $item['nama_satker'];
+                            echo "<option value='$satker_id'> $nama_satker </option>";
+                            }
                     }
+                   
+
                 @endphp
                 
             
@@ -343,14 +347,17 @@
 
                     $array = json_decode( $listprogram, true );
 
-                    $arrays = $array['program'];
+                    $arrays = $array['program'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                            foreach($arrays as $item) {
 
-                        $kode_program = $item['kode_program'];
-                        $nama_program = $item['nama_program'];
-                        echo "<option value='$kode_program'> $nama_program </option>";
+                            $kode_program = $item['kode_program'];
+                            $nama_program = $item['nama_program'];
+                            echo "<option value='$kode_program'> $nama_program </option>";
+                        }
                     }
+                    
                         @endphp
                 
             
@@ -367,14 +374,15 @@
 
                     $array = json_decode( $listkegiatan, true );
 
-                    $arrays = $array['kegiatan'];
-
-                    foreach($arrays as $item) {
-
-                        $kode_kegiatan = $item['kode_kegiatan'];
-                        $nama_kegiatan = $item['nama_kegiatan'];
-                        echo "<option value='$kode_kegiatan'> $nama_kegiatan </option>";
+                    $arrays = $array['kegiatan'] ?? '';
+                    if($arrays) {
+                            foreach($arrays as $item) {
+                                $kode_kegiatan = $item['kode_kegiatan'];
+                                $nama_kegiatan = $item['nama_kegiatan'];
+                                echo "<option value='$kode_kegiatan'> $nama_kegiatan </option>";
+                            }
                     }
+                    
                 @endphp
                 
             
@@ -393,14 +401,19 @@
 
                     $array = json_decode( $listkro, true );
 
-                    $arrays = $array['kro'];
+                    $arrays = $array['kro'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+
+                        foreach($arrays as $item) {
 
                         $kode_kro = $item['kode_kro'];
                         $nama_kro = $item['nama_kro'];
                         echo "<option value='$kode_kro'> $nama_kro </option>";
+                        }
+
                     }
+                    
                 @endphp
                 
             
@@ -417,14 +430,19 @@
 
                     $array = json_decode( $listro, true );
 
-                    $arrays = $array['ro'];
+                    $arrays = $array['ro'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+
+                        foreach($arrays as $item) {
 
                         $kode_ro = $item['kode_ro'];
                         $nama_ro = $item['nama_ro'];
                         echo "<option value='$kode_ro'> $nama_ro </option>";
+                        }
+
                     }
+                    
                 @endphp
                 
             
@@ -445,14 +463,17 @@
 
                     $array = json_decode( $listkomponen, true );
 
-                    $arrays = $array['komponen'];
+                    $arrays = $array['komponen'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
                         $kode_komponen = $item['kode_komponen'];
                         $nama_komponen = $item['nama_komponen'];
                         echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                        }
                     }
+                    
                 @endphp
                 </select>
             <br><br>   
@@ -463,13 +484,15 @@
 
                     $array = json_decode( $listsubKomponen, true );
 
-                    $arrays = $array['subkomponen'];
+                    $arrays = $array['subkomponen'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
-                        $kode_subkomponen = $item['kode_subkomponen'];
-                        $nama_subkomponen = $item['nama_subkomponen'];
-                        echo "<option value='$kode_subkomponen'> $nama_subkomponen </option>";
+                            $kode_subkomponen = $item['kode_subkomponen'];
+                            $nama_subkomponen = $item['nama_subkomponen'];
+                            echo "<option value='$kode_subkomponen'> $nama_subkomponen </option>";
+                        }
                     }
                 @endphp
                 
@@ -489,14 +512,17 @@
 
                     $array = json_decode( $listakun, true );
 
-                    $arrays = $array['akun'];
+                    $arrays = $array['akun'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if ($arrays) {
+                        foreach($arrays as $item) {
 
                         $kode = $item['kode'];
                         $uraian = $item['uraian'];
                         echo "<option value='$kode'> $uraian </option>";
+                        }
                     }
+                    
                 @endphp
                 
             
@@ -562,14 +588,19 @@
 
                     $array = json_decode( $listsatker, true );
 
-                    $arrays = $array['satker'];
+                    $arrays = $array['satker'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
 
-                        $satker_id = $item['satker_id'];
-                        $nama_satker = $item['nama_satker'];
-                        echo "<option value='$satker_id'> $nama_satker </option>";
+                        foreach($arrays as $item) {
+
+                            $satker_id = $item['satker_id'];
+                            $nama_satker = $item['nama_satker'];
+                            echo "<option value='$satker_id'> $nama_satker </option>";
+                            }
+
                     }
+                    
                 @endphp
                 
             
@@ -583,14 +614,17 @@
 
                     $array = json_decode( $listprogram, true );
 
-                    $arrays = $array['program'];
+                    $arrays = $array['program'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if ($arrays) {
+                        foreach($arrays as $item) {
 
                         $kode_program = $item['kode_program'];
                         $nama_program = $item['nama_program'];
                         echo "<option value='$kode_program'> $nama_program </option>";
+                        }
                     }
+                    
                         @endphp
                 
             
@@ -607,13 +641,15 @@
 
                     $array = json_decode( $listkegiatan, true );
 
-                    $arrays = $array['kegiatan'];
+                    $arrays = $array['kegiatan'] ?? '';
 
-                    foreach($arrays as $item) {
+                        if($arrays) {
+                        foreach($arrays as $item) {
 
-                        $kode_kegiatan = $item['kode_kegiatan'];
-                        $nama_kegiatan = $item['nama_kegiatan'];
-                        echo "<option value='$kode_kegiatan'> $nama_kegiatan </option>";
+                            $kode_kegiatan = $item['kode_kegiatan'];
+                            $nama_kegiatan = $item['nama_kegiatan'];
+                            echo "<option value='$kode_kegiatan'> $nama_kegiatan </option>";
+                        }
                     }
                 @endphp
                 
@@ -633,14 +669,17 @@
 
                     $array = json_decode( $listkro, true );
 
-                    $arrays = $array['kro'];
+                    $arrays = $array['kro'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
                         $kode_kro = $item['kode_kro'];
                         $nama_kro = $item['nama_kro'];
                         echo "<option value='$kode_kro'> $nama_kro </option>";
+                        }
                     }
+                    
                 @endphp
                 
             
@@ -657,14 +696,17 @@
 
                     $array = json_decode( $listro, true );
 
-                    $arrays = $array['ro'];
+                    $arrays = $array['ro'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if ($arrays) {
+                        foreach($arrays as $item) {
 
-                        $kode_ro = $item['kode_ro'];
-                        $nama_ro = $item['nama_ro'];
-                        echo "<option value='$kode_ro'> $nama_ro </option>";
+                            $kode_ro = $item['kode_ro'];
+                            $nama_ro = $item['nama_ro'];
+                            echo "<option value='$kode_ro'> $nama_ro </option>";
+                        }
                     }
+                    
                 @endphp
                 
             
@@ -685,14 +727,17 @@
 
                     $array = json_decode( $listkomponen, true );
 
-                    $arrays = $array['komponen'];
+                    $arrays = $array['komponen'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
-                        $kode_komponen = $item['kode_komponen'];
-                        $nama_komponen = $item['nama_komponen'];
-                        echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                            $kode_komponen = $item['kode_komponen'];
+                            $nama_komponen = $item['nama_komponen'];
+                            echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                        }
                     }
+                    
                 @endphp
                 </select>
             <br><br>   
@@ -703,14 +748,19 @@
 
                     $array = json_decode( $listsubKomponen, true );
 
-                    $arrays = $array['subkomponen'];
+                    $arrays = $array['subkomponen'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
 
-                        $kode_subkomponen = $item['kode_subkomponen'];
-                        $nama_subkomponen = $item['nama_subkomponen'];
-                        echo "<option value='$kode_subkomponen'> $nama_subkomponen </option>";
+                        foreach($arrays as $item) {
+
+                            $kode_subkomponen = $item['kode_subkomponen'];
+                            $nama_subkomponen = $item['nama_subkomponen'];
+                            echo "<option value='$kode_subkomponen'> $nama_subkomponen </option>";
+                        }
+
                     }
+                    
                 @endphp
                 
             
@@ -729,14 +779,17 @@
 
                     $array = json_decode( $listakun, true );
 
-                    $arrays = $array['akun'];
+                    $arrays = $array['akun'] ?? '';
 
-                    foreach($arrays as $item) {
+                    if($arrays) {
+                        foreach($arrays as $item) {
 
-                        $kode = $item['kode'];
-                        $uraian = $item['uraian'];
-                        echo "<option value='$kode'> $uraian </option>";
+                            $kode = $item['kode'];
+                            $uraian = $item['uraian'];
+                            echo "<option value='$kode'> $uraian </option>";
+                        }
                     }
+                    
                 @endphp
                 
             
@@ -862,7 +915,7 @@
 
 $arr_rab_rincians = json_decode( $listrabrincian, true );
 
-$arr_rab_rincianss = $arr_rab_rincians['rab_rincian'];
+$arr_rab_rincianss = $arr_rab_rincians['rab_rincian'] ?? '';
 
 
 
