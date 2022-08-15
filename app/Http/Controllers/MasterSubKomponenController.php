@@ -13,7 +13,7 @@ class MasterSubKomponenController extends Controller
 {
     public function indexSubKomponen(Request $request){
         try{   
-         $token = Cookie::get('access_token'); 
+         $token = app('App\Http\Controllers\CookieController')->getCookie(); 
          $listkomponens = app('App\Http\Controllers\KomponenController')->getKomponen($token);
          $listsubKomponens = app('App\Http\Controllers\SubKomponenController')->getSubkomponen($token);
  
@@ -33,7 +33,7 @@ class MasterSubKomponenController extends Controller
         try{        
             
 
-            $token = Cookie::get('access_token');      
+            $token = app('App\Http\Controllers\CookieController')->getCookie();      
             
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/subkomponen";

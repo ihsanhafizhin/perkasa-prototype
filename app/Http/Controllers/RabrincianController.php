@@ -34,7 +34,7 @@ class RabrincianController extends Controller
             $txt_harga = $request->txt_harga;
             $txt_total = $request->txt_total;
 
-            $token = Cookie::get('access_token');                                             
+            $token = app('App\Http\Controllers\CookieController')->getCookie();                                            
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/RabRincianAdd";   
 
@@ -77,7 +77,7 @@ class RabrincianController extends Controller
             
              $rab_rincian_id = $request->v_id;
             //$rab_rincian_id = 34;
-            $token = Cookie::get('access_token');                                     
+            $token = app('App\Http\Controllers\CookieController')->getCookie();                                      
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/delete/rab_rincian";   
                         

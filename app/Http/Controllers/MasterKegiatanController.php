@@ -13,7 +13,7 @@ class MasterKegiatanController extends Controller
 {
     public function indexKegiatan(Request $request){
         try{   
-         $token = Cookie::get('access_token'); 
+         $token = app('App\Http\Controllers\CookieController')->getCookie(); 
          $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
          $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
  
@@ -32,7 +32,7 @@ class MasterKegiatanController extends Controller
         try{        
             
 
-            $token = Cookie::get('access_token');      
+            $token = app('App\Http\Controllers\CookieController')->getCookie();      
             
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/kegiatan";
