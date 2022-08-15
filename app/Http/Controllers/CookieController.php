@@ -25,16 +25,14 @@ class CookieController extends Controller
                 // dd("test");
                 // $token = $this->autoLoginApi();
                 // dd($token);
-                Auth::logout();
-                return redirect()->route('login.view');
+                app('App\Http\Controllers\AuthController')->logout();
             }
             
         }catch(Exception $err) {
                 //dd("test2");   
                 // $token = $this->autoLoginApi();
                 // dd($token);       
-                Auth::logout();
-                return redirect()->route('login.view');
+                app('App\Http\Controllers\AuthController')->logout();
         }
     }  
     

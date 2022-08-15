@@ -8,12 +8,17 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Hash, Http};
 use Illuminate\Support\Facades\Cookie;
+
+use Tymon\JWTAuth\Facades\JWTAuth;
 class RABController extends Controller
 {
    
     public function rab_kegiatan(Request $request) {
         try{                     
-            $token = app('App\Http\Controllers\CookieController')->getCookie();           
+            $token = app('App\Http\Controllers\CookieController')->getCookie();  
+            
+            
+
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
             $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
