@@ -15,7 +15,7 @@ class CookieController extends Controller
    
     public function getCookies() {
         app('App\Http\Controllers\CookieController')->checkToken("");             
-        $token = app('App\Http\Controllers\CookieController')->getCookies();  
+        $token = app('App\Http\Controllers\CookieController')->getCookie();  
         app('App\Http\Controllers\CookieController')->checkToken(""); 
         return $token;
     } 
@@ -42,7 +42,8 @@ class CookieController extends Controller
     }
 
     public function autoLoginApi() {
-       
+        ini_set('max_execution_time', 300);
+
         $password="password";
         $username_string = Cookie::get('cookiesp_1'); 
         $password_string = Cookie::get('cookiesp_2');
