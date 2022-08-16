@@ -27,7 +27,7 @@ class RabrincianController extends Controller
     public function getRabrincians(Request $request) {
         try{      
             
-            $token = app('App\Http\Controllers\CookieController')->getCookie();                        
+            $token = app('App\Http\Controllers\CookieController')->getCookies();                        
             $api_url = "/api/list/RabRincianView";              
             $listrabrincian = app('App\Http\Controllers\CURLController')->curlGet($token,$api_url); 
 
@@ -58,7 +58,7 @@ class RabrincianController extends Controller
             $txt_harga = $request->txt_harga;
             $txt_total = $request->txt_total;
 
-            $token = app('App\Http\Controllers\CookieController')->getCookie();                                            
+            $token = app('App\Http\Controllers\CookieController')->getCookies();                                            
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL./api/add/RabRincianAdd";   
 
@@ -103,7 +103,7 @@ class RabrincianController extends Controller
             
              $rab_rincian_id = $request->v_id;
             //$rab_rincian_id = 34;
-            $token = app('App\Http\Controllers\CookieController')->getCookie();                                      
+            $token = app('App\Http\Controllers\CookieController')->getCookies();                                      
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/delete/rab_rincian";   
                         

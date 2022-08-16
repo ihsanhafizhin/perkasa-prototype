@@ -13,7 +13,7 @@ class MasterProgramController extends Controller
 {
     public function indexProgram(Request $request){
        try{   
-        $token = app('App\Http\Controllers\CookieController')->getCookie(); 
+        $token = app('App\Http\Controllers\CookieController')->getCookies(); 
         $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
 
         return view('program', [
@@ -31,7 +31,7 @@ class MasterProgramController extends Controller
         try{        
             
 
-            $token = app('App\Http\Controllers\CookieController')->getCookie();      
+            $token = app('App\Http\Controllers\CookieController')->getCookies();      
             
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/program";

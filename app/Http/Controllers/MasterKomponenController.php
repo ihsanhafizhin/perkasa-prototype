@@ -13,7 +13,7 @@ class MasterKomponenController extends Controller
 {
     public function indexKomponen(Request $request){
         try{   
-         $token = app('App\Http\Controllers\CookieController')->getCookie(); 
+         $token = app('App\Http\Controllers\CookieController')->getCookies(); 
          $listkomponens = app('App\Http\Controllers\KomponenController')->getKomponen($token);
          $listros = app('App\Http\Controllers\RoController')->getRo($token); 
  
@@ -33,7 +33,7 @@ class MasterKomponenController extends Controller
         try{        
             
 
-            $token = app('App\Http\Controllers\CookieController')->getCookie();      
+            $token = app('App\Http\Controllers\CookieController')->getCookies();      
             
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/komponen";

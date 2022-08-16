@@ -13,7 +13,7 @@ class MasterKroController extends Controller
 {
     public function indexKro(Request $request){
         try{   
-         $token = app('App\Http\Controllers\CookieController')->getCookie(); 
+         $token = app('App\Http\Controllers\CookieController')->getCookies(); 
          $listkros = app('App\Http\Controllers\KroController')->getKro($token);  
          $listkegiatans = app('App\Http\Controllers\KegiatanController')->getKegiatan($token); 
  
@@ -33,7 +33,7 @@ class MasterKroController extends Controller
         try{        
             
 
-            $token = app('App\Http\Controllers\CookieController')->getCookie();      
+            $token = app('App\Http\Controllers\CookieController')->getCookies();      
             
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/kro";

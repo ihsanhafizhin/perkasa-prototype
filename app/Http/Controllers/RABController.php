@@ -15,11 +15,9 @@ class RABController extends Controller
    
     public function rab_kegiatan(Request $request) {
         try{        
-            app('App\Http\Controllers\CookieController')->checkToken("");             
-            $token = app('App\Http\Controllers\CookieController')->getCookie();  
-            app('App\Http\Controllers\CookieController')->checkToken(""); 
-            
-
+                       
+            $token = app('App\Http\Controllers\CookieController')->getCookies();  
+          
             $listsatkers = app('App\Http\Controllers\SatkerController')->getSatker($token);
             
             $listprograms = app('App\Http\Controllers\ProgramController')->getProgram($token); 
@@ -104,7 +102,7 @@ class RABController extends Controller
             $cbo_komponen = $request->cbo_komponen;
             
 
-            $token = app('App\Http\Controllers\CookieController')->getCookie();   
+            $token = app('App\Http\Controllers\CookieController')->getCookies();   
                         
             $BASE_URL = env('API_URL');           
             $api_url = "$BASE_URL/api/add/RabAdd";   

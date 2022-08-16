@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Cookie;
 class CookieController extends Controller
 {
    
-    
+    public function getCookies() {
+        app('App\Http\Controllers\CookieController')->checkToken("");             
+        $token = app('App\Http\Controllers\CookieController')->getCookies();  
+        app('App\Http\Controllers\CookieController')->checkToken(""); 
+        return $token;
+    } 
+
     public function getCookie() {
         try{                                                        
             $response = Cookie::get('cookiesp_3'); 
