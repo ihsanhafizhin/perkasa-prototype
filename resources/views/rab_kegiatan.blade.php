@@ -540,7 +540,7 @@
                 <td>Total</td>
             </tr>
             <tr>
-                <td><input id="txt_d_uraian" name="txt_d_uraian" type="text" style="width: 70%;"></td>
+                <td><input id="txt_uraian" name="txt_uraian" type="text" style="width: 70%;"></td>
                 <td><input id="txt_volume" name="txt_volume" type="text" style="width: 70%;"></td>
                 <td><input id="txt_satuan" name="txt_satuan" type="text" style="width: 70%;"></td>
                 <td><input id="txt_harga" name="txt_harga" type="text" style="width: 70%;"></td>
@@ -563,7 +563,7 @@
     </div> 
     
     <div style="padding-top:10%;" class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="margin-right:40%">
+    <div class="modal-dialog modal-lg" role="document" style="margin-right:38%">
         <div class="modal-content" style="background-color:maroon; color:white;width:150%; height:115%;">
 
 
@@ -658,6 +658,9 @@
             
             
             <br><br>
+
+            
+
             </div>
             <div class="kiri">
                 
@@ -711,37 +714,32 @@
                 
             
                 </select>
+                
+                <br><br>
 
-            </div>
-        </div>
+                Komponen : 
+                <select name="cbo_komponen_rk_d" id="cbo_komponen_rk_d" style="width: 70%;" >
+                    <option value="">  </option>
+                    @php
 
-        <div class="modal-header">
-            <!-- <div class="kirikuyy" style="margin-top:10px">                            
-            </div> -->
-            <div class="kanankuyy">
-            
-            Komponen : 
-            <select name="cbo_komponen_rk_d" id="cbo_komponen_rk_d" style="width: 70%;" >
-                <option value="">  </option>
-                @php
+                        $array = json_decode( $listkomponen, true );
 
-                    $array = json_decode( $listkomponen, true );
+                        $arrays = $array['komponen'] ?? '';
 
-                    $arrays = $array['komponen'] ?? '';
+                        if($arrays) {
+                            foreach($arrays as $item) {
 
-                    if($arrays) {
-                        foreach($arrays as $item) {
-
-                            $kode_komponen = $item['kode_komponen'];
-                            $nama_komponen = $item['nama_komponen'];
-                            echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                                $kode_komponen = $item['kode_komponen'];
+                                $nama_komponen = $item['nama_komponen'];
+                                echo "<option value='$kode_komponen'> $nama_komponen </option>";
+                            }
                         }
-                    }
-                    
-                @endphp
-                </select>
-            <br><br>   
-            Sub Komponen : 
+                        
+                    @endphp
+                    </select>
+                <br><br> 
+
+                Sub Komponen : 
             <select name="cbo_subkomponen_rk_d" id="cbo_subkomponen_rk_d" style="width: 70%;" >
                 <option value="">  </option>
                 @php
@@ -766,39 +764,44 @@
             
             </select>
             <br><br>
+
             </div>
         </div>
 
-        <div class="modal-body" align="center">
-        Kode Akun : 
-        
-
-        <select name="cbo_akun_rk_d" id="cbo_akun_rk_d" style="width: 70%;" >
-                <option value="">  </option>
-                @php
-
-                    $array = json_decode( $listakun, true );
-
-                    $arrays = $array['akun'] ?? '';
-
-                    if($arrays) {
-                        foreach($arrays as $item) {
-
-                            $kode = $item['kode'];
-                            $uraian = $item['uraian'];
-                            echo "<option value='$kode'> $uraian </option>";
-                        }
-                    }
+        <div class="modal-header">
+            <!-- <div class="kirikuyy" style="margin-top:10px">                            
+            </div> -->
+            <div class="kanankuyy">
                     
-                @endphp
+            Kode Akun : 
+            <select name="cbo_akun_rk_d" id="cbo_akun_rk_d" style="width: 70%;" >
+                    <option value="">  </option>
+                    @php
+
+                        $array = json_decode( $listakun, true );
+
+                        $arrays = $array['akun'] ?? '';
+
+                        if($arrays) {
+                            foreach($arrays as $item) {
+
+                                $kode = $item['kode'];
+                                $uraian = $item['uraian'];
+                                echo "<option value='$kode'> $uraian </option>";
+                            }
+                        }
+                        
+                    @endphp
+                    
                 
-            
-            </select>
-
-
+                </select>        
+        </div>           
         </div>
+
         
-        <table border="0" style="color:white; text-align:center">
+        
+        <table id="tbl_rekam_detail" border="0" style="color:white; text-align:center">
+        <tbody>
             <tr>
                 <td>Detail Uraian</td>
                 <td>Volume</td>
@@ -806,15 +809,14 @@
                 <td>Harga</td>
                 <td>Total</td>
             </tr>
-            <tr>
-                <td><input id="txt_d_uraian_d" name="txt_d_uraian_d" type="text" style="width: 70%;"></td>
-                <td><input id="txt_volume_d" name="txt_volume_d" type="text" style="width: 70%;"></td>
-                <td><input id="txt_satuan_d" name="txt_satuan_d" type="text" style="width: 70%;"></td>
-                <td><input id="txt_harga_d" name="txt_harga_d" type="text" style="width: 70%;"></td>
-                <td><input id="txt_total_d" name="txt_total_d" type="text" style="width: 70%;"></td>
-            </tr>
+        </tbody>
+            
+
+
+
         </table>
 
+    
         <br>
         <div class="modal-body" style="margin-top:0%; margin-left:60%">
             
@@ -823,7 +825,7 @@
         </div>
 
         </center>
-    </form>	
+        </form>	
 
    
         </div>
@@ -833,7 +835,16 @@
 
 
 @push('js-table')
+
 <script>
+    $(document).ready(function(){
+        $("#tbl_rekam_detail").hide();
+    });
+</script>        
+
+<script>
+
+
 
 $('#cbo_akun_rk_d').change(function(){ 
 	var value = $(this).val();
@@ -845,6 +856,9 @@ $('#cbo_akun_rk_d').change(function(){
 
 function get_rab_rincian(value) {
 //alert(value);
+
+$("#tbl_rekam_detail").show();
+
 $.ajax({
     type: 'GET',
     url: '/rab_rincian_get',
@@ -864,12 +878,9 @@ $.ajax({
             $satuan =  $arb_array[i]['satuan'];
             $sbm =  $arb_array[i]['sbm'];
             $subtotal =  $arb_array[i]['subtotal'];
+             
+            $('#tbl_rekam_detail').append("<tr><td><input id='txt_d_uraian_d_"+ i +"' name='txt_d_uraian_d_"+ i +"'  type='text' style='width: 100%;' value='"+$uraian+"'></td><td><input id='txt_volume_d' name='txt_volume_d_"+ i +"' type='text' style='width: 100%;' value='"+$volum+"'></td><td><input id='txt_satuan_d_"+ i +"' name='txt_satuan_d_"+ i +"' type='text' style='width: 100%;' value='"+$satuan+"'></td><td><input id='txt_harga_txt_satuan_d_"+ i +" name='txt_harga_txt_satuan_d_"+ i +" type='text' style='width: 100%;' value='"+$sbm+"'></td><td><input id='txt_total_d_"+ i +"' name='txt_total_d_"+ i +"' type='text' style='width: 100%;' value='"+$subtotal+"'></td> </tr>");
             
-            $("#txt_d_uraian_d").val($uraian);
-            $("#txt_volume_d").val($volum);
-            $("#txt_satuan_d").val($satuan);
-            $("#txt_harga_d").val($sbm);
-            $("#txt_total_d").val($subtotal);            
         }
 
     },
