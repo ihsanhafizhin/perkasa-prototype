@@ -298,7 +298,7 @@
     </div>
 
     <div style="padding-top:10%;" class="modal fade" id="akun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="margin-right:40%">
+    <div class="modal-dialog modal-lg" role="document" style="margin-right:38%">
         <div class="modal-content" style="background-color:red; color:white;width:150%; height:110%;">
 
         <form action="{{ route('addrab') }}" method="POST">
@@ -387,9 +387,7 @@
                 
             
                 </select>	
-            
-            
-            <br><br>
+                                    
             </div>
             <div class="kiri">
                 
@@ -421,7 +419,7 @@
                 
 
                 <br><br>
-                RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
+                RO &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: 
                
 
                 <select name="cbo_ro" id="cbo_ro" style="width: 70%;" >
@@ -443,21 +441,12 @@
 
                     }
                     
-                @endphp
-                
-            
+                @endphp                        
                 </select>
 
-            </div>
-        </div>
-
-        <div class="modal-header">
-            <!-- <div class="kirikuyy" style="margin-top:10px">                            
-            </div> -->
-            <div class="kanankuyy">
-            
-            Komponen : 
-            <select name="cbo_komponen" id="cbo_komponen" style="width: 70%;" >
+                <br><br>
+                Komponen &nbsp&nbsp&nbsp:
+                <select name="cbo_komponen" id="cbo_komponen" style="width: 70%;" >
                 <option value="">  </option>
                 @php
 
@@ -476,8 +465,9 @@
                     
                 @endphp
                 </select>
-            <br><br>   
-            Sub Komponen : 
+            <br><br> 
+
+            Sub Komponen &nbsp&nbsp&nbsp: 
             <select name="cbo_subkomponen" id="cbo_subkomponen" style="width: 70%;" >
                 <option value="">  </option>
                 @php
@@ -498,15 +488,21 @@
                 
             
             </select>
-            <br><br>
+
+            <br><br> 
             </div>
         </div>
 
-        <div class="modal-body" align="center">
-        Kode Akun : 
+        <div class="modal-header">
+            <!-- <div class="kirikuyy" style="margin-top:10px">                            
+            </div> -->
+            <div class="kanankuyy">
+            
+             
+            Kode Akun : 
         
 
-        <select name="cbo_akun" id="cbo_akun" style="width: 70%;" >
+            <select name="cbo_akun" id="cbo_akun" style="width: 70%;" >
                 <option value="">  </option>
                 @php
 
@@ -527,11 +523,13 @@
                 
             
             </select>
-
-
+            
+            </div>
         </div>
+
+       
         
-        <table border="0" style="color:white; text-align:center">
+        <table id="tbl_rekam_akun" border="0" style="color:white; text-align:center">
             <tr>
                 <td>Detail Uraian</td>
                 <td>Volume</td>
@@ -539,13 +537,13 @@
                 <td>Harga</td>
                 <td>Total</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td><input id="txt_uraian" name="txt_uraian" type="text" style="width: 70%;"></td>
                 <td><input id="txt_volume" name="txt_volume" type="text" style="width: 70%;"></td>
                 <td><input id="txt_satuan" name="txt_satuan" type="text" style="width: 70%;"></td>
                 <td><input id="txt_harga" name="txt_harga" type="text" style="width: 70%;"></td>
                 <td><input id="txt_total" name="txt_total" type="text" style="width: 70%;"></td>
-            </tr>
+            </tr> -->
         </table>
 
         <br>
@@ -801,19 +799,15 @@
         
         
         <table id="tbl_rekam_detail" border="0" style="color:white; text-align:center">
-        <tbody>
-            <tr>
-                <td>Detail Uraian</td>
-                <td>Volume</td>
-                <td>Satuan</td>
-                <td>Harga</td>
-                <td>Total</td>
-            </tr>
-        </tbody>
-            
-
-
-
+            <tbody>
+                <tr>
+                    <td>Detail Uraian</td>
+                    <td>Volume</td>
+                    <td>Satuan</td>
+                    <td>Harga</td>
+                    <td>Total</td>
+                </tr>
+            </tbody>            
         </table>
 
     
@@ -839,6 +833,8 @@
 <script>
     $(document).ready(function(){
         $("#tbl_rekam_detail").hide();
+
+        add_tbl_rekam_akun();
     });
 </script>        
 
@@ -849,45 +845,42 @@
 $('#cbo_akun_rk_d').change(function(){ 
 	var value = $(this).val();
     get_rab_rincian(value);
-
-    
-
 });
 
 function get_rab_rincian(value) {
-//alert(value);
+    //alert(value);
 
-$("#tbl_rekam_detail").show();
+    $("#tbl_rekam_detail").show();
 
-$.ajax({
-    type: 'GET',
-    url: '/rab_rincian_get',
-    success: function(data){
-        var $arr_rab_rincians = JSON.parse(data);
-        $arb_array = $arr_rab_rincians;
-        $arb_array_length = $arb_array.length;
-        for (i = 0; i < $arb_array_length; i++) {
+    $.ajax({
+        type: 'GET',
+        url: '/rab_rincian_get',
+        success: function(data){
+            var $arr_rab_rincians = JSON.parse(data);
+            $arb_array = $arr_rab_rincians;
+            $arb_array_length = $arb_array.length;
+            for (i = 0; i < $arb_array_length; i++) {
 
-            $rab_rincian_id =  $arb_array[i]['rab_rincian_id'];
-            //   $kode =  $arb_array[i]['kode'];
-            //   $id =  $arb_array[i]['id'];
-            $kode_akun =  $arb_array[i]['kode_akun'];
-            $detail_id =  $arb_array[i]['detail_id'];
-            $uraian =  $arb_array[i]['uraian'];
-            $volum =  $arb_array[i]['volum'];      
-            $satuan =  $arb_array[i]['satuan'];
-            $sbm =  $arb_array[i]['sbm'];
-            $subtotal =  $arb_array[i]['subtotal'];
-             
-            $('#tbl_rekam_detail').append("<tr><td><input id='txt_d_uraian_d_"+ i +"' name='txt_d_uraian_d_"+ i +"'  type='text' style='width: 100%;' value='"+$uraian+"'></td><td><input id='txt_volume_d' name='txt_volume_d_"+ i +"' type='text' style='width: 100%;' value='"+$volum+"'></td><td><input id='txt_satuan_d_"+ i +"' name='txt_satuan_d_"+ i +"' type='text' style='width: 100%;' value='"+$satuan+"'></td><td><input id='txt_harga_txt_satuan_d_"+ i +" name='txt_harga_txt_satuan_d_"+ i +" type='text' style='width: 100%;' value='"+$sbm+"'></td><td><input id='txt_total_d_"+ i +"' name='txt_total_d_"+ i +"' type='text' style='width: 100%;' value='"+$subtotal+"'></td> </tr>");
-            
+                $rab_rincian_id =  $arb_array[i]['rab_rincian_id'];
+                //   $kode =  $arb_array[i]['kode'];
+                //   $id =  $arb_array[i]['id'];
+                $kode_akun =  $arb_array[i]['kode_akun'];
+                $detail_id =  $arb_array[i]['detail_id'];
+                $uraian =  $arb_array[i]['uraian'];
+                $volum =  $arb_array[i]['volum'];      
+                $satuan =  $arb_array[i]['satuan'];
+                $sbm =  $arb_array[i]['sbm'];
+                $subtotal =  $arb_array[i]['subtotal'];
+                
+                $('#tbl_rekam_detail').append("<tr><td><input id='txt_d_uraian_d_"+ i +"' name='txt_d_uraian_d_"+ i +"'  type='text' style='width: 100%;' value='"+$uraian+"'></td><td><input id='txt_volume_d' name='txt_volume_d_"+ i +"' type='text' style='width: 100%;' value='"+$volum+"'></td><td><input id='txt_satuan_d_"+ i +"' name='txt_satuan_d_"+ i +"' type='text' style='width: 100%;' value='"+$satuan+"'></td><td><input id='txt_harga_txt_satuan_d_"+ i +" name='txt_harga_txt_satuan_d_"+ i +" type='text' style='width: 100%;' value='"+$sbm+"'></td><td><input id='txt_total_d_"+ i +"' name='txt_total_d_"+ i +"' type='text' style='width: 100%;' value='"+$subtotal+"'></td> </tr>");
+                
+            }
+
+        },
+        error: function(xhr){
+            console.log(xhr.responseText);
         }
-
-    },
-    error: function(xhr){
-        console.log(xhr.responseText);
-    }
-});
+    });
 
 }
 
@@ -917,10 +910,8 @@ function get_rab_rincian_tbl(value) {
         },
         error: function(xhr){
             console.log(xhr.responseText);
-        }
-    });
-
 }
+
 
 </script>
 
@@ -1005,11 +996,7 @@ function get_rab_rincian_tbl(value) {
 @php
 
 $arr_rab_rincians = json_decode( $listrabrincian, true );
-
 $arr_rab_rincianss = $arr_rab_rincians['rab_rincian'] ?? '';
-
-
-
 
 @endphp
 
